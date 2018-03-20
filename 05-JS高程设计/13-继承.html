@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script>
+    function SuperType(name) {
+        this.name = name;
+    }
+
+    function SubType() {
+        debugger;
+        SuperType.call(this, 'xia')
+        this.age = 29;
+        console.log(this)
+    }
+
+    var instance = new SubType();
+
+    console.log(instance.name, instance.age)
+
+</script>
+<body>
+
+</body>
+</html>

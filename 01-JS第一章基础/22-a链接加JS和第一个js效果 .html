@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>a链接加JS</title>
+    <style>
+        #box {
+            width: 400px;
+            height: 200px;
+            border: 1px solid #94ff74;
+            display: none;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var box = document.getElementById('box');
+        }
+
+    </script>
+</head>
+<body>
+<a href="javaScript:alert(1);" >a链接加JS</a>
+<input type="button" id="btn" value="按钮"onmouseover="box.style.display='block'" onmouseout="box.style.display='none'">
+<div id="box">提示框：当你在是使用。。。</div>
+
+</body>
+</html>

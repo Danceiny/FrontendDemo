@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>href与src</title>
+</head>
+<body>
+<img id="pic" src="../img/DSC_0163.JPG" style="width: 1000px;height: 650px;">
+<a href="02-Js测试.html" id="link">JS</a>
+
+<script>
+    /*
+     * href 链接 的地址
+     * src 图片的地址
+     *
+     * href和src取到的是绝对地址，不是属性里的值
+     * 切记不要拿href和src取到的值做判断。
+     * */
+    var pic = document.getElementById('pic');
+    var link = document.getElementById('link');
+
+    console.log(pic.src);    //http://localhost:63342/PRJ2_JsTest/img/DSC_0163.JPG
+    console.log(link.href);  //http://localhost:63342/PRJ2_JsTest/02-Js%E6%B5%8B%E8%AF%95.html
+</script>
+</body>
+</html>

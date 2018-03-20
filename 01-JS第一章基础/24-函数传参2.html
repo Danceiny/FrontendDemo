@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>24-函数传参2</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 400px;
+            background: white;
+        }
+    </style>
+    <script>
+        function setColor(color) {
+            var box=document.getElementById('box');
+            box.style.background=color;
+            console.log(color);
+            console.log(box.style.background);
+        }
+    </script>
+</head>
+<body>
+<input type="button" value="变绿" onclick="setColor('green')">
+<input type="button" value="变黄" onclick="setColor('yellow')">
+<input type="button" value="变红" onclick="setColor('red')">
+
+<div id="box"></div>
+</body>
+</html>

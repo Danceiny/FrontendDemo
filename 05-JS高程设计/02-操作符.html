@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    /*操作符*/
+    var num1 = 10;
+    var num2 = 20;
+    //num1++自加后在此次表达式中值还是原值，下一次才显示,++num1先执行自加并改值再执行其他
+    console.log(num1++, num1, ++num1); // 10 ,11 , 12
+    console.log(num1++ + num2, num1 + num2, --num1 + num2);  // 32, 33, 32
+
+    console.log('Abb' < 'ABb'); //false
+    console.log('Abb' < 'aBb'); //true
+
+    //    逗号
+    var num = (2, 4, 6);
+    console.log(num);
+    //    循环
+    var num = 0;
+    over:
+        for (var i = 0; i < 10; i++) {
+            for (var j = 0; j < 10; j++) {
+                if (i == 4 && j == 7) {
+                    console.log(i, j);
+                    break over;
+                }
+                num++;      //执行到多少次循环
+            }
+        }
+
+    console.log(num);
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script>
+
+    function creatFunction() {
+        var result = new Array();
+        console.log(222, this)
+//        result = function () {
+//            console.log(33,this)
+        for (var i = 0; i < 10; i++) {
+            result[i] = function () {
+                    console.log(this)
+                return i;
+            }()
+        }
+//        }
+//        rsesult.call(this)
+
+        console.log('result', result)
+        return result;
+    }
+
+//    var f = new creatFunction()
+//    var result = f;
+        var result = creatFunction();
+    console.log(result);
+
+</script>
+<body>
+
+</body>
+</html>

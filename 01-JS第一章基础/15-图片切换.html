@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片切换</title>
+    <style>
+        #pic {
+            /*width:600px;
+            height: 400px;*/
+            display: block;
+        }
+    </style>
+    <script>
+        /*
+        * 需求：点击上一张，下一张实现切换，并且实现循环
+        * 分析：
+        *       1、获取内容
+        *       2、点击事件
+        *           a、上一张点击事件
+        *           b、下一张点击事件
+        *
+        * */
+
+        window.onload = function () {
+            var btn1 = document.getElementById('btn1');
+            var next = document.getElementById('next');
+            var pic = document.getElementById('pic');
+            var n = 1, min = 0, max = 16;
+
+            console.log(n);
+
+            //上一张按钮点击事件
+            btn1.onclick = function () {
+                if (n <= min + 1) {
+                    n = max + 1;
+                }
+                console.log(max, min);
+                n--;
+                console.log(n);
+                pic.src = 'img/' + n + '.png';  ////字符串拼接
+            }
+            //下一张按钮点击事件
+            next.onclick = function () {
+                if (n >= max) {
+                    n = min;
+                }
+                console.log(max, min);
+                n++;
+                console.log(n);
+                pic.src = 'img/' + n + '.png';  //字符串拼接
+            }
+        }
+    </script>
+
+</head>
+<body>
+<input type="button" id="btn1" value="上一张">
+<input type="button" id="next" value="下一张">
+<img src="../img/1.png" id="pic" alt="loglo">
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1 {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            opacity: 0.3; /*chrome firefox下 */
+            filter: alpha(opacity=30); /*IE下 */
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var oDiv = document.getElementById('div1');
+            oDiv.onmouseover = function () {
+                startChange(100);
+            };
+            oDiv.onmouseout = function () {
+                startChange(30);
+            }
+        };
+        var timer = null;
+        var alpha = 30;
+        var speed = 0;
+        function startChange(iTarget) {
+            var oDiv = document.getElementById('div1');
+            clearInterval(timer);  //首先先关掉定时器，不然会开启多个定时器
+
+
+            timer = setInterval(function () {
+//               设定速度和方向
+                if (alpha > iTarget) {
+                    speed = -5;
+                }
+                else {
+                    speed = 5;
+                }
+
+                if (alpha == iTarget) {
+                    clearInterval(timer);
+                }
+                else {
+                    alpha += speed;
+                    oDiv.style.opacity = alpha / 100;   //chrome fireFox下
+                    oDiv.style.filter = 'alpha(opacity=' + alpha + ')';   //IE下
+                    console.log(alpha);
+                }
+            }, 20)
+        }
+    </script>
+</head>
+<body>
+<div id="div1">
+
+</div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>多图片淡入淡出</title>
+    <style>
+        .div {
+            margin-top: 20px;
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            opacity: 0.3;
+            filter: alpha(opacity:30);
+        }
+    </style>
+
+    <script>
+        //var alpha = 30;
+        window.onload = function () {
+            var aDiv = document.getElementsByTagName('div');
+            for (var i = 0; i < aDiv.length; i++) {
+
+                aDiv[i].timer = null;
+               //同理，所有物体
+                aDiv[i].alpha = 30;
+                aDiv[i].onmouseover = function () {
+                    startMove(this, 100)
+                }
+                aDiv[i].onmouseout = function () {
+                    startMove(this, 30)
+                }
+            }
+        }
+        function startMove(obj, iTarget) {
+            clearInterval(obj.timer);
+
+            obj.timer = setInterval(function () {
+                var speed = (iTarget - obj.alpha) / 5;
+
+                speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+
+                if (obj.alpha == iTarget) {
+                    clearInterval(obj.timer);
+                }
+                else {
+                    obj.alpha += speed;
+                    obj.style.opacity = obj.alpha / 100;  //chrome fireFox
+                    obj.style.filter = 'alpha(opacity:' + obj.alpha + ')';
+                    console.log(obj.style.opacity);
+                }
+            }, 30)
+        }
+    </script>
+</head>
+<body>
+<div class="div"></div>
+<div class="div"></div>
+<div class="div"></div>
+</body>
+</html>

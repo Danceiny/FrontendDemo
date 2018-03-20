@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>className</title>
+</head>
+<body>
+<div class="wang" id="div1">这是一个关于className的实例</div>
+<script>
+    var div1=document.getElementById('div1');
+   // div1.class='xiaoling';
+    console.log(div1.class);    //值为undefined
+    //正确获取方式
+    console.log(div1.className);    //wang
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 400px;
+            background: white;
+        }
+    </style>
+    <script>
+
+
+        function toGreen() {
+            var box = document.getElementById('box');
+            box.style.background = 'green';
+        }
+
+        function toYellow() {
+            var box = document.getElementById('box');
+            box.style.background = 'yellow';
+        }
+
+        function toRed() {
+            var box = document.getElementById('box');
+            box.style.background = 'red';
+        }
+
+
+    </script>
+</head>
+<body>
+<input type="button" value="变绿" onclick="toGreen()">
+<input type="button" value="变黄" onclick="toYellow()">
+<input type="button" value="变红" onclick="toRed()">
+
+<div id="box"></div>
+</body>
+</html>

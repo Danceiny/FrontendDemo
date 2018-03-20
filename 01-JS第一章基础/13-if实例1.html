@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>if</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: aquamarine;
+            border: 10px solid #768fff;
+            display: none;
+
+        }
+    </style>
+</head>
+<body>
+<script>
+    /*
+     * 需求：点击按钮，让box在显示和隐藏之间切换
+     * 分析：
+     *   1、拿到按钮、box
+     *   2、给按钮添加点击事件，根据box的 属性
+     *       如果box是显示的，则执行隐藏
+     *       如果box是隐藏的，则执行显示
+     *
+     *   style 操作的行间样式。
+     *
+     * */
+    window.onload = function () {
+        var btn = document.getElementById('btn');
+        var box = document.getElementById('box');
+
+        btn.onclick = function () {
+            //此时style样式为内嵌，但是属性操作符box.style操作的事行间样式，返回的值时空，
+            console.log(box.style.display); //空，什么也没有
+            if (box.style.display=='none'){
+                box.style.display='block';
+            }
+            else{
+                box.style.display='none';
+            }
+                    }
+    }
+</script>
+
+<input type="button" id="btn" value="切换">
+<div id="box">这是一个可以显示隐藏的box</div>
+</body>
+</html>

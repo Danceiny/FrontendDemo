@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function setName(obj) {
+        obj.name='xiaao';
+        obj=new Object();
+        obj.name ='weiyao';
+        console.log(obj);  //weiyao
+    }
+
+    var person= new Object();
+    setName(person);
+    console.log(person);    //xiaao
+</script>
+</body>
+</html>

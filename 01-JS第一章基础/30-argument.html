@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>30-argument</title>
+    <script>
+        /*
+        * arguments	可变参	不定参
+        *       是一个数组
+        * */
+        function sum() {
+            var result = 0;
+
+            for (var i = 0; i < arguments.length; i++) {
+                result+=arguments[i];
+            }
+
+            return result;
+        }
+        alert(sum(4,1,33,4));
+    </script>
+</head>
+<body>
+
+</body>
+</html>

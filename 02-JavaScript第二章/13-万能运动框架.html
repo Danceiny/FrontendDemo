@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>13-万能运动框架</title>
+    <script type="text/javascript" src="everyMove.js"></script>
+    <style>
+        #box{
+            width:100px;
+            height:100px;
+            background: red;
+            opacity: 0.3;
+            filter:alpha(opacity:30);
+        }
+    </style>
+
+    <script>
+        window.onload=function () {
+            var oBtn=document.getElementById('btn');
+            var oBox=document.getElementById('box');
+
+            oBtn.onclick=function () {
+                starMove(oBox,{height:400,width:300,opacity:100});
+            }
+        }
+
+    </script>
+</head>
+<body>
+<button id="btn">改变</button>
+<div id="box"></div>
+</body>
+</html>

@@ -1,0 +1,157 @@
+body {
+    margin: 0;
+    background-color: #666;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+img {
+    border: 0;
+}
+
+.play {
+    width: 400px;
+    height: 430px;
+    margin: 50px auto 0;
+    background: #999;
+    font: 12px Arial;
+}
+
+.big-pic {
+    width: 400px;
+    height: 320px;
+    overflow: hidden;
+    border-bottom: 1px solid #ccc;
+    background: #222;
+    position: relative;
+}
+
+.big-pic li {
+    width: 400px;
+    height: 320px;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    background: url(flashPlayer/loading.gif) no-repeat center center;
+}
+
+.mark-left {
+    width: 200px;
+    height: 320px;
+    position: absolute;
+    top: 0;
+    left: 0px;
+    border-bottom: 1px solid #ccc;
+    background-color: red;
+    opacity: 0;
+    filter: alpha(opacity:0);
+    z-index: 3000;
+}
+
+.mark-right {
+    width: 200px;
+    height: 320px;
+    position: absolute;
+    top: 0;
+    left: 200px;
+    border-bottom: 1px solid #ccc;
+    background-color: green;
+    opacity: 0;
+    filter: alpha(opacity:0);
+    z-index: 3000;
+}
+
+.big-pic .prev {
+    width: 60px;
+    height: 60px;
+    background: url(flashPlayer/btn.gif) no-repeat;
+    position: absolute;
+    top: 130px;
+    left: 10px;
+    z-index: 3001;
+    opacity: 0;
+    filter:alpha(opacity:0);
+    cursor: pointer;
+}
+
+.big-pic .next {
+    width: 60px;
+    height: 60px;
+    background: url(flashPlayer/btn.gif) no-repeat 0 -60px;
+    position: absolute;
+    top: 130px;
+    right: 10px;
+    z-index: 3001;
+    opacity: 0;
+    filter:alpha(opacity:0);
+    cursor: pointer;
+}
+
+.text {
+    position: absolute;
+    left: 10px;
+    top: 302px;
+    z-index: 3000;
+    color: #ccc;
+}
+
+.length {
+    position: absolute;
+    right: 10px;
+    bottom: 4px;
+    z-index: 3000;
+    color: #ccc;
+}
+
+.bg {
+    width: 400px;
+    height: 25px;
+    background: #000;
+    filter: alpha(opacity=60);
+    opacity: 0.6;
+    position: absolute;
+    z-index: 2999;
+    bottom: 0;
+    left: 0;
+}
+
+.small-pic {
+    width: 380px;
+    height: 94px;
+    position: relative;
+    top: 7px;
+    left: 10px;
+    overflow: hidden;
+}
+
+.small-pic ul {
+    height: 94px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.small-pic li {
+    width: 120px;
+    height: 94px;
+    float: left;
+    padding-right: 10px;
+    background: url(flashPlayer/loading.gif) no-repeat center center;
+    cursor: pointer;
+    filter: alpha(opacity=60);
+    opacity: 0.6;
+}
+
+.small-pic img {
+    width: 120px;
+    height: 94px;
+}

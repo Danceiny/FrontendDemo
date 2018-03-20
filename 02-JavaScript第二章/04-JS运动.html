@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS运动</title>
+    <style>
+        #div1 {
+            width: 200px;
+            height: 300px;
+            background-color: yellow;
+            position: absolute;
+            left: -200px;
+        }
+
+        #div1 span {
+            width: 20px;
+            height: 60px;
+            background-color: green;
+            position: absolute;
+            right: -20px;
+            top: 120px;
+        }
+    </style>
+
+    <script>
+        window.onload = function () {
+            var oDiv = document.getElementById('div1');
+
+            oDiv.onmouseover = function () {
+                startMove(0);
+            }
+            oDiv.onmouseout = function () {
+                startMove(-200);
+            }
+        };
+        var timer = null;
+        function startMove(iTarget) {
+            var oDiv = document.getElementById('div1');
+            clearInterval(timer);
+            var speed = 0;
+//            判断往左往右移动，这个地方很巧妙，移入移出都可以判断。
+            if (oDiv.offsetLeft > iTarget) {
+                speed = -10;
+            }
+            else {
+                speed = 10;
+            }
+
+            timer = setInterval(function () {
+                if (oDiv.offsetLeft == iTarget) {
+                    clearInterval(timer);
+                }
+                else {
+                    oDiv.style.left = oDiv.offsetLeft + speed + 'px';
+                }
+            }, 30);
+        }
+        /*分成两个函数*/
+        /*  function startMove2() {
+         var oDiv = document.getElementById('div1');
+         clearInterval(timer);
+
+         timer= setInterval(function () {
+         if(oDiv.offsetLeft==-200){
+         clearInterval(timer);
+         }
+         else{
+         oDiv.style.left=oDiv.offsetLeft-10+'px';
+         }
+         },30);
+         }*/
+    </script>
+</head>
+<body>
+<div id="div1">
+    <div class="item">
+        <ul>
+            <li><a href="#">中国</a></li>
+            <li><a href="#">美国</a></li>
+            <li><a href="#">日本</a></li>
+            <li><a href="#">德国</a></li>
+        </ul>
+    </div>
+    <span>分享到</span>
+</div>
+</body>
+</html>

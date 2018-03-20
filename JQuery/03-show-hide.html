@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>show-hide</title>
+    <script src="https://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js">
+    </script>
+    <script>
+        $(function () {
+            $('#show').click(function () {
+                $('p').show();
+            })
+        })
+        $(function () {
+            $('#hide').click(function () {
+                $('p').hide();
+            })
+        })
+    </script>
+</head>
+<body>
+<p>显示隐藏的p标签</p>
+<input type="button" id="show" value="显示">
+<input type="button" id="hide" value="隐藏">
+</body>
+</html>

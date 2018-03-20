@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>innerHTML</title>
+</head>
+<body>
+<script>
+    /*
+     * innerHTML    获取到一个标签对里面的所有内容
+     * 如果标签对当中有其他标签，会同样的获取到
+     *
+     * 再给innerHTML设置值得时候，如果这个值里面有html标签，那放到网页当中，会把它解析成一个真正的html标签。
+     */
+    window.onload = function () {
+        var btn = document.getElementById('btn');
+        var box = document.getElementById('box');
+
+        btn.onclick = function () {
+            console.log(box.innerHTML);
+            //innerHTMl设置
+            box.innerHTML='<span>将原来box的所有内容全部替换</span>';
+            console.log(box.innerHTML);
+        }
+    }
+</script>
+<input type="button" id="btn" value="你是一个大SB">
+<div id="box"><p>标题</p>这里是原来的一段初始文字</div>
+</body>
+</html>

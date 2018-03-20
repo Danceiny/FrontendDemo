@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    var say;
+    if (1) {
+        say = function () {
+            console.log('true');
+        }
+    } else {
+        say = function () {
+            console.log('false');
+        }
+    }
+
+    //  递归函数
+    var factorial = (function f(num) {
+        if (num <= 1) {
+            return 1;
+        } else {
+            return num * f(num - 1);
+//            return num * arguments.callee;
+        }
+    });
+    console.log(factorial(5));
+
+    //    "use strict";
+    var factorial2 = function (num) {
+        if (num <= 1) {
+            return 1;
+        } else {
+//            return num * f(num - 1);
+            return num * arguments.callee(num - 1);
+        }
+    };
+    console.log(factorial2(6));
+
+
+    //    闭包
+    function creatFunctions() {
+        var result = [];
+//        debugger;
+        for (var i = 0; i < 10; i++) {
+            result[i] = function () {
+                return i;
+            }
+        }
+        return result;
+    }
+
+    console.log(creatFunctions());
+
+    function creatFunction2() {
+        var result = [];
+//        debugger;
+        for (var i = 0; i < 10; i++) {
+            result[i] = function (num) {
+                return function () {
+                    return num;
+                }
+            }
+        }
+        return result;
+    }
+
+    console.log(creatFunction2()[3]);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hieght</title>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js">
+    </script>
+</head>
+<body style="background: #CCC;">
+<style>
+    #div1 {
+        background: yellow;
+        height: 300px;
+        width: 300px;
+        margin: 20px;
+        padding: 40px;
+        border: 10px solid #c3c;
+    }
+</style>
+<div id="div1">
+
+</div>
+<script>
+    var height = $("#div1").height;
+    var innerHeight= $("#div1").innerHeight();
+    var outerHeight= $("#div1").outerHeight();
+    var clientHeight = document.getElementById('div1').clientHeight;
+    var offsetHeight = document.getElementById('div1').offsetHeight;
+    var scrollHeight = document.getElementById('div1').scrollHeight;
+    console.log('height:' + height);
+    console.log('innerHeight:' + innerHeight);
+    console.log('outerHeight:' + outerHeight);
+    console.log('clientHeight:' + clientHeight);
+    console.log('offsetHeight:' + offsetHeight);
+    console.log('scrollHeight:' + scrollHeight);
+</script>
+</body>
+</html>

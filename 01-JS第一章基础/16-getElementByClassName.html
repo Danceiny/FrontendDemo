@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>getElementByClassName</title>
+</head>
+<body>
+<script>
+    /*
+    * getElementsByClassName
+    * 通过class得到一组元素。
+    * 主语
+    *       document 从整个文档里去获得class元素
+    *       父级      从父级去获得class元素。
+    * */
+
+    window.onload = function () {
+        //从document中获取所有className=green的元素
+        var greens = document.getElementsByClassName('green');
+        console.dir(greens);
+
+        //从color中获取className=green的元素
+        var color = document.getElementById('color');
+        var greens1=color.getElementsByClassName('green');
+        console.dir(greens1);
+
+    }
+</script>
+
+<ul id="color">
+    <li>red</li>
+    <li class="green">green</li>
+    <li>yellow</li>
+    <li>blue</li>
+    <li>pink</li>
+    <li>orange</li>
+</ul>
+<ul>
+    <li>red</li>
+    <li class="green">green</li>
+    <li>yellow</li>
+    <li>blue</li>
+    <li>pink</li>
+    <li>orange</li>
+</ul>
+</body>
+</html>

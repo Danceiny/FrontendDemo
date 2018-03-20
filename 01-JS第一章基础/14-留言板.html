@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>留言板</title>
+    <style>
+        #box {
+            height: 500px;
+            width: 500px;
+            border: 1px solid #94ff74;
+        }
+    </style>
+</head>
+<body>
+<input type="text" id="text" value="">
+<input type="button" id="btn" value="提交"><br><br>
+<div id="box"></div>
+<script>
+    /*
+     * 需求：留言板，将输入框的内容打到显示框
+     * 分析： 1、获取输入框、按钮、显示框
+     *       2、添加点击事件，
+     *           a、获取用户输入的内容
+     *           b、把获取到的内容显示到box里
+     * */
+    var text = document.getElementById('text');
+    var btn = document.getElementById('btn');
+    var box = document.getElementById('box');
+
+    btn.onclick = function () {
+        var val = text.value;   //将用户输入的内容赋给变量val
+        var newText='<p>' + val + '</p>';
+        //console.log(val);
+
+        //字符串拼接
+        //<p>val</p>
+
+
+        /*
+        * innerHTML
+        * 设置内容
+        * 获取内容（老内容）
+        * */
+        //box.innerHTML =  box.innerHTML+'<p>' + val + '</p>';
+        //box.innerHTML =  box.innerHTML+newText;     //新内容在下面显示
+        box.innerHTML =  newText+box.innerHTML;     //新内容在上面显示
+    }
+
+</script>
+
+</body>
+</html>

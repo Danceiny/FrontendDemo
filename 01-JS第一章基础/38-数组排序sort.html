@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>38-数组排序sort</title>
+    <script>
+        var arr1 = ['a', 's', 'af', 'fr', 'vc'];
+        var arr2 = [12, 453, 2, 56, 78];
+
+        //对于字符数组排序，按照首字母的大小进行排序
+        arr1.sort();
+        alert(arr1);
+        arr2.sort();
+        alert(arr2);
+
+        //对于数字数组的排序，通过函数判断返回值，返回值可以为负数、正数、0 三种
+        arr2.sort(function (n1, n2) {
+
+                    return n1 - n2;
+
+                  /*  if (n1 < n2) {
+                        return -2;//只要是个负数就行
+                    }
+                    else if (n1 > n2) {
+                        return 2;//只要是个正数就行
+                    }
+                    else {
+                        return 0;
+                    }*/
+                }
+        );
+        alert(arr2);
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

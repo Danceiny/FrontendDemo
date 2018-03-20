@@ -1,0 +1,13 @@
+
+#chess{
+    margin:50px auto;
+
+    display: block;
+    /*background: #d5d5d5;*/
+    box-shadow: -2px -2px 2px #efefef, 2px 2px 2px #b9b9b9;
+
+}
+/*
+.background{
+     background-images: url("../img/logo.jpg");
+ }*/

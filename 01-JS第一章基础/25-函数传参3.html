@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>25-函数传参3</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            background: white;
+        }
+    </style>
+    <script>
+        /*
+        * 多个属性的函数传参方式
+        * 修改属性不固定的时候使用
+        * */
+        function setStyle(name, value) {
+            var box= document.getElementById('box');
+            //第二种属性操作方式[]
+            box.style[name]=value;  //此时value是作为变量传入的参数，所以不需要加''
+        }
+    </script>
+</head>
+<body>
+<input type="button" value="变绿" onclick="setStyle('background', 'green')">
+<input type="button" value="变红" onclick="setStyle('background','red')">
+<input type="button" value="变高" onclick="setStyle('height','300px')">
+<input type="button" value="变宽" onclick="setStyle('width','300px')">
+<div id="box"></div>
+</body>
+</html>

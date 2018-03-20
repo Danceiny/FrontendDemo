@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>promise1</title>
+</head>
+<body>
+<script>
+
+    /*    function asyncFunction() {
+            return new Promise(function (resolve, reject) {
+                setTimeout(function () {
+                    resolve('Async Hello world');
+    //                reject('error');
+                }, 162);
+                setTimeout(function () {
+    //                resolve('Async Hello world');
+                    reject('error');
+                }, 161);
+            });
+        }
+
+        asyncFunction().then(function (value) {
+    //        debugger;
+            console.log(value);    // => 'Async Hello world'
+        }).catch(function (error) {
+    //        debugger;
+            console.log(error);
+        });*/
+
+    /********************************* 分割线 ****************************************/
+    /*function getURL(URL) {
+        return new Promise(function (resolve, reject) {
+            var req = new XMLHttpRequest();
+            req.open('GET', URL, true);
+            req.onload = function () {
+                if (req.status === 200) {
+                    resolve(req.responseText);
+                } else {
+                    reject(new Error(req.statusText));
+                }
+            };
+            req.onerror = function () {
+                reject(new Error(req.statusText));
+            };
+            req.send();
+        });
+    }
+    // 运行示例
+    var URL = "http://httpbin.org/get";
+    getURL(URL).then(function onFulfilled(value){
+        debugger;
+        console.log(value);
+    }).catch(function onRejected(error){
+        debugger;
+        console.error(error);
+    });*/
+    /********************************* 分割线 ****************************************/
+    ///* 执行顺序*/
+    //    var promise = new Promise(function (resolve){
+    //        console.log("inner promise"); // 1
+    //        resolve(42);
+    //    });
+    //    promise.then(function(value){
+    //        console.log(value); // 3
+    //    });
+    //    console.log("outer promise"); // 2
+
+    /********************************* 分割线 ****************************************/
+
+    //function onReady(fn) {
+    //        var readyState = document.readyState;
+    //        console.log(document.readyState);
+    //        if (readyState === 'interactive' || readyState === 'complete') {
+    ////            debugger;
+    //            fn();
+    //        } else {
+    //            window.addEventListener('DOMContentLoaded', fn);
+    //        }
+    //
+    //}
+    //onReady(function () {
+    //    console.log('DOM fully loaded and parsed');
+    //});
+    //console.log(document.readyState);
+    //console.log('==Starting==');
+
+    /********************************* 分割线 ****************************************/
+    // 1: 对同一个promise对象同时调用 `then` 方法
+    //    var aPromise = new Promise(function (resolve) {
+    //            resolve(100);
+    //        });
+    //    aPromise.then(function (value) {
+    //        return value * 2;
+    //    });
+    //    aPromise.then(function (value) {
+    //        return value * 2;
+    //    });
+    //    aPromise.then(function (value) {
+    //        console.log("1: " + value); // => 100
+    //    })
+    //
+    //    // vs
+    //
+    //    // 2: 对 `then` 进行 promise chain 方式进行调用
+    //    var bPromise = new Promise(function (resolve) {
+    //        resolve(100);
+    //    });
+    //    bPromise.then(function (value) {
+    //        return value * 2;
+    //    }).then(function (value) {
+    //        return value * 2;
+    //    }).then(function (value) {
+    //        console.log("2: " + value); // => 100 * 2 * 2
+    //    });
+
+    /********************************* 分割线 ****************************************/
+    /*    function getURLCallback(URL, callback) {
+            var req = new XMLHttpRequest();
+            req.open('GET', URL, true);
+            req.onload = function () {
+                if (req.status === 200) {
+                    callback(null, req.responseText);
+                } else {
+                    callback(new Error(req.statusText), req.response);
+                }
+            };
+            req.onerror = function () {
+                callback(new Error(req.statusText));
+            };
+            req.send();
+        }
+        // <1> 对JSON数据进行安全的解析
+        function jsonParse(callback, error, value) {
+            if (error) {
+                callback(error, value);
+            } else {
+                try {
+                    var result = JSON.parse(value);
+                    callback(null, result);
+                } catch (e) {
+                    callback(e, value);
+                }
+            }
+        }
+        // <2> 发送XHR请求
+        var request = {
+            comment: function getComment(callback) {
+                return getURLCallback('http://azu.github.io/promises-book/json/comment.json', jsonParse.bind(null, callback));
+            },
+            people: function getPeople(callback) {
+                return getURLCallback('http://azu.github.io/promises-book/json/people.json', jsonParse.bind(null, callback));
+            }
+        };
+        // <3> 启动多个XHR请求，当所有请求返回时调用callback
+        function allRequest(requests, callback, results) {
+            if (requests.length === 0) {
+                return callback(null, results);
+            }
+            var req = requests.shift();
+            req(function (error, value) {
+                if (error) {
+                    callback(error, value);
+                } else {
+                    results.push(value);
+                    allRequest(requests, callback, results);
+                }
+            });
+        }
+        function main(callback) {
+            debugger;
+            allRequest([request.comment, request.people], callback, []);
+        }
+        // 运行的例子
+        main(function(error, results){
+            if(error){
+                return console.error(error);
+            }
+            console.log(results);
+        });*/
+
+
+
+    /********************************* 分割线 ****************************************/
+    /*    // `delay`毫秒后执行resolve
+        function timerPromisefy(delay) {
+            return new Promise(function (resolve) {
+                setTimeout(function () {
+                    resolve(delay);
+                }, delay);
+            });
+        }
+        var startDate = Date.now();
+        // 所有promise变为resolve后程序退出
+        Promise.all([
+            timerPromisefy(32),
+            timerPromisefy(1),
+            timerPromisefy(64),
+            timerPromisefy(128)
+        ]).then(function (values) {
+            console.log(Date.now() - startDate + 'ms');
+            // 約128ms
+            console.log(values);    // [1,32,64,128]
+        });*/
+
+    /********************************* 分割线 ****************************************/
+    /*/!*Web Notification 包装函数（wrapper）*!/
+        function notifyMessage(message, options, callback) {
+            if (Notification && Notification.permission === 'granted') {
+                var notification = new Notification(message, options);
+                callback(null, notification);
+            } else if (Notification.requestPermission) {
+                Notification.requestPermission(function (status) {
+                    if (Notification.permission !== status) {
+                        Notification.permission = status;
+                    }
+                    if (status === 'granted') {
+                        var notification = new Notification(message, options);
+                        callback(null, notification);
+                    } else {
+                        callback(new Error('user denied'));
+                    }
+                });
+            } else {
+                callback(new Error('doesn\'t support Notification API'));
+            }
+        }
+        // 运行实例
+        // 第二个参数是传给 `Notification` 的option对象
+        notifyMessage("Hi!", {}, function (error, notification) {
+            if(error){
+                return console.error(error);
+            }
+            console.log(notification);// 通知对象
+        });*/
+    /******************************************************************************/
+    /*    function notifyMessage(message, options, callback) {
+            if (Notification && Notification.permission === 'granted') {
+                var notification = new Notification(message, options);
+                callback(null, notification);
+            } else if (Notification.requestPermission) {
+                Notification.requestPermission(function (status) {
+                    if (Notification.permission !== status) {
+                        Notification.permission = status;
+                    }
+                    if (status === 'granted') {
+                        var notification = new Notification(message, options);
+                        callback(null, notification);
+                    } else {
+                        callback(new Error('user denied'));
+                    }
+                });
+            } else {
+                callback(new Error('doesn\'t support Notification API'));
+            }
+        }
+        function notifyMessageAsPromise(message, options) {
+            return new Promise(function (resolve, reject) {
+                notifyMessage(message, options, function (error, notification) {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        resolve(notification);
+                    }
+                });
+            });
+        }
+        // 运行示例
+        notifyMessageAsPromise("Hi!").then(function (notification) {
+            console.log(notification);// 通知对象
+        }).catch(function(error){
+            console.error(error);
+        });*/
+
+    /********************************* 分割线 ****************************************/
+//    var winnerPromise = new Promise(function (resolve) {
+//
+//        setTimeout(function () {
+//            console.log('this is loser');
+//            resolve('this is winner');
+//        }, 4);
+//    });
+//    var loserPromise = new Promise(function (resolve) {
+//        setTimeout(function () {
+//            console.log('this is loser');
+//            resolve('this is loser');
+//        }, 1000);
+//    });
+//    // 第一个promise变为resolve后程序停止
+//    Promise.all([winnerPromise, loserPromise]).then(function (value) {
+//        console.log(value);    // => 'this is winner'
+//    });
+
+    /**************************************************************************/
+        function delayPromise(ms) {
+            return new Promise(function (resolve) {
+                setTimeout(resolve, ms);
+            });
+        }
+        function timeoutPromise(promise, ms) {
+            var timeout = delayPromise(ms).then(function () {
+                throw new Error('Operation timed out after ' + ms + ' ms');
+            });
+            return Promise.race([promise, timeout]);
+        }
+        // 运行示例
+        var taskPromise = new Promise(function(resolve){
+            // 随便一些什么处理
+            var delay = Math.random() * 2000;
+            setTimeout(function(){
+                resolve(delay + "ms");
+            }, delay);
+        });
+        timeoutPromise(taskPromise, 1000).then(function(value){
+            console.log("taskPromise在规定时间内结束 : " + value);
+        }).catch(function(error){
+            console.log("发生超时", error);
+        });
+
+    /********************************* 分割线 ****************************************/
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>07-多物体同时运功</title>
+    <style>
+        .div {
+            margin-top: 20px;
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+
+    <script>
+        window.onload = function () {
+            var aDiv = document.getElementsByTagName('div');
+
+            for (var i = 0; i < aDiv.length; i++) {
+
+                //定义自定义属性，每一个运动一个定时器，关定时器关闭对应的定时器。
+                aDiv[i].timer = null;
+                aDiv[i].onmouseover = function () {
+                    startMove(this, 800)
+                }
+                aDiv[i].onmouseout = function () {
+                    startMove(this, 100)
+                }
+            }
+        }
+
+        function startMove(obj, iTarget) {
+            clearInterval(obj.timer);
+
+            obj.timer = setInterval(function () {
+                var speed = (iTarget - obj.offsetWidth) / 5
+                console.log(obj.offsetWidth);
+                //将速度取整、
+                speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+
+                if (obj.style.offsetWidth == iTarget) {
+                    clearInterval(obj.timer);
+                }
+                else {
+                    obj.style.width = obj.offsetWidth + speed + 'px';
+                }
+            }, 30);
+        }
+    </script>
+</head>
+<body>
+<div class="div"></div>
+<div class="div"></div>
+<div class="div"></div>
+</body>
+</html>

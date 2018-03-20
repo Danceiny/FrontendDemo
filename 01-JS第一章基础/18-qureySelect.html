@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>querySelect</title>
+<!--    <style>
+        #color > li:first-child {
+            background: #ff3524;
+        }
+
+        #color > li:nth-child(3) {
+            background: yellow;
+        }
+    </style>-->
+    <script>
+        /*
+         * querySelect
+         * 通过CSS选择器去获取一个元素
+         * 它只获取一个元素，如果元素有重复的，只取第一个元素
+         *
+         * 主语
+         *       document 从整个文档里去获得class元素
+         *       父级      从父级去获得class元素。
+         *
+         * */
+
+        window.onload = function () {
+            //
+            var red = document.querySelector('#color li:first-child');
+            red.style.background = 'red';
+
+            var ul=document.querySelector('.color2');
+            ul.style.background='yellow';
+        }
+    </script>
+</head>
+<ul id="color">
+    <li>red</li>
+    <li class="green">green</li>
+    <li>yellow</li>
+    <li>blue</li>
+    <li>pink</li>
+    <li>orange</li>
+</ul>
+<ul class="color2">
+    <li>red</li>
+    <li class="green">green</li>
+    <li>yellow</li>
+    <li>blue</li>
+    <li>pink</li>
+    <li>orange</li>
+</ul>
+</body>
+</html>

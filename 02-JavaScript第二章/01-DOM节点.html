@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>节点</title>
+    <script>
+        window.onload = function () {
+            //childNodes 计算节点数，会把元素节点和文本节点都算进去
+            //nodeType==3  ->文本节点
+            //nodeType==1  ->元素节点
+
+            //children 计算元素节点
+
+            var oUl = document.getElementById('ul1');
+            for (var i = 0; i < oUl.childNodes.length; i++) {
+                if (oUl.childNodes[i].nodeType == 1) {
+                    oUl.childNodes[i].style.background='yellow';
+                }
+            }
+
+
+        }
+    </script>
+</head>
+<body>
+<ul id="ul1">
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+</body>
+</html>

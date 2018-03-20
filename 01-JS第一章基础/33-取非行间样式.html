@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #div1{
+            width: 200px;height: 200px; background: #94ff74;
+        }
+    </style>
+
+    <script>
+        window.onload=function () {
+            var oDiv=document.getElementById('div1');
+
+            //alert(oDiv.style.width);  //JS只能操作行间样式，不能操作非行间样式
+            //IE下
+            //alert(oDiv.currentStyle.width);
+
+            //chrom FF下
+//            alert(getComputedStyle(oDiv,null).width);
+
+            //解决兼容性问题
+            //alert(oDiv.currentStyle);
+            if(oDiv.currentStyle){
+                //IE
+                alert(oDiv.currentStyle.width);
+            }
+            else{
+                //chrome FF
+                alert(getComputedStyle(oDiv,null).width);
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="div1"></div>
+</body>
+</html>

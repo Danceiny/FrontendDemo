@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    //    alert(null instanceof Object)
+    //    console.log(+new Array(017))
+    /*立即执行函数*/
+    /*function a(){
+        console.log(1,'first')
+        (function() {
+            console.log(2,"second")
+        }());
+        function c () {
+            console.log(3,'c')
+        }
+    }
+        a();*/
+
+    /*var name="the window";
+    var object={
+        name:"my Object",
+        getName: function () {
+            console.log(this.name);
+            return function () {
+                console.log(this.name);
+                return this.name
+            }()
+
+        }
+    }
+    object.getName();*/
+
+
+    /*  function Person() {
+      }
+
+      Person.prototype.name = 'Nicholas';
+      Person.prototype.age = 29;
+      Person.prototype.job = "Software Engineer";
+      Person.prototype.syaName = function () {
+          alert(this.name);
+      }
+      var person1 = new Person();
+      var person2 = new Person();
+
+      person1.name = 'Mack';
+
+      console.log(person1.__proto__.constructor.__proto__) // Mack
+  */
+
+
+    function SuperType() {
+        this.property = true;
+    }
+
+    SuperType.prototype.getSuperValue = function () {
+        return this.property;
+    }
+
+    function SubType() {
+        this.subproperty = false;
+    }
+
+    //继承了SuperType
+    SubType.prototype = new SuperType();
+
+    SuperType.prototype.getSubValue = function () {
+        return this.subproperty;
+    };
+    var instance = new SubType();
+    console.log(instance.getSuperValue());
+    console.log(instance.getSubValue());
+
+</script>
+
+</body>
+</html>

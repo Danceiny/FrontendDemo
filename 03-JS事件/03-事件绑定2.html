@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>03-事件绑定2</title>
+    <script>
+        // 绑定事件框架函数
+        function myAddEvent(obj, ev, fn) {
+            if(obj.attachEvent){
+                obj.attachEvent('on'+ev,fn);
+            }
+            else{
+                obj.addEventListener(ev,fn);
+            }
+        }
+        window.onload = function () {
+            var oBtn = document.getElementById('btn');
+
+            myAddEvent(oBtn,'click',function () {
+                alert('a');
+            });
+
+            myAddEvent(oBtn,'click',function () {
+                alert('b');
+            });
+        }
+    </script>
+
+</head>
+<body>
+<button id="btn">提交</button>
+</body>
+</html>

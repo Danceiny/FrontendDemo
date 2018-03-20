@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>34-取非行间样式2</title>
+    <style>
+        #div1 {
+            width: 200px;
+            height: 200px;
+            background: #94ff74;
+        }
+    </style>
+
+    <script>
+
+        function getStyle(obj, name) {
+            if (obj.currentStyle) {
+                return  obj.currentStyle[name];
+            }
+            else {
+                return  getComputedStyle(obj, null)[name];
+            }
+        }
+
+        window.onload = function () {
+            var oDiv = document.getElementById('div1');
+           alert(getStyle(oDiv,'width'));
+
+        }
+    </script>
+</head>
+<body>
+<div id="div1"></div>
+</body>
+</html>

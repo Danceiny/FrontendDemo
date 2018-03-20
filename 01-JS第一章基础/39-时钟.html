@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>timer</title>
+    <script>
+        /*
+        * serInterval   间隔时间执行
+        * serInterval(String或者函数，间隔时间 单位毫秒)
+        *
+        * setTimeout    延时型，延时设定时间执行
+        * setTimeout(String或者函数，延时时间 单位毫秒)
+        *
+        * 关闭定时器：需要找到对应的定时器，不然会将所有的定时器全部关掉
+        * clearInterval(自定义的定时器名字)
+        * clearTimeout(自定义的定时器名字)
+        *
+        * */
+        window.onload = function () {
+            var oBtn1 = document.getElementById('btn1');
+            var oBtn2 = document.getElementById('btn2');
+            var timer;
+
+            oBtn1.onclick=function () {
+                //间隔
+                timer=setInterval(function () {
+                    alert('a')
+                },1000)
+            }
+
+            oBtn2.onclick=function () {
+                //关闭间隔
+                clearInterval(timer);
+            }
+        }
+
+
+    </script>
+</head>
+<body>
+<input id="btn1" type="button" value="启动">
+<input id="btn2" type="button" value="停止">
+</body>
+</html>

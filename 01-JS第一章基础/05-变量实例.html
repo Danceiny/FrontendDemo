@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>变量实例</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: blueviolet;
+        }
+    </style>
+</head>
+<body>
+<input type="button" id="btn" value="击我" style="background-color: aqua"/>
+<input type="button" id="btn2" value="点我出现大图">
+<div id="box"></div>
+<img id="img" src="../img/DSC_0052.jpg" alt="工大花海" width="150px" height="100px">
+<script>
+    var boxx=document.getElementById("box");
+    document.getElementById("btn").onclick = function () {
+        document.getElementById("btn").style.background = 'red';
+        document.getElementById("btn").value = '点击我';
+        boxx.style.height = '300px';
+        boxx.style.width = '500px';
+        boxx.style.padding="10px";
+        boxx.style.border="2px";
+    }
+    document.getElementById("btn2").onclick = function () {
+        document.getElementById("img").style.height = '1500px';
+        document.getElementById("img").style.width = '2000px';
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>运动框架1</title>
+    <style>
+        div {
+            margin-top: 20px;
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            border: 10px solid black;
+        }
+    </style>
+
+    <script>
+        window.onload = function () {
+            /*不同的div对应不同的事件*/
+            var oDiv1 = document.getElementById('div1');
+            oDiv1.onmouseover = function () {
+                starMove(this, 'width', 400);
+//                starMove(this, 'opacity', 100);
+            }
+            oDiv1.onmouseout = function () {
+                starMove(this, 'width', 200);
+//                starMove(this, 'opacity', 30);
+            }
+
+            var oDiv2 = document.getElementById('div2');
+            oDiv2.onmouseover = function () {
+                starMove(this, 'height', 400);
+            }
+            oDiv2.onmouseout = function () {
+                starMove(this, 'height', 200);
+            }
+
+            var oDiv3 = document.getElementById('div3');
+            oDiv3.onmouseover = function () {
+                starMove(this, 'border-width', 50);
+            }
+            oDiv3.onmouseout = function () {
+                starMove(this, 'border-width', 10);
+            }
+
+            var oDiv4 = document.getElementById('div4');
+            oDiv4.onmouseover = function () {
+                starMove(this, 'font-size', 100);
+            }
+            oDiv4.onmouseout = function () {
+                starMove(this, 'font-size', 10);
+            }
+        }
+
+        /*获取当前对象的style*/
+        function getStyle(obj, name) {
+            if (obj.currentStyle) {
+                return obj.currentStyle[name];
+            }
+            else {
+                return getComputedStyle(obj, false)[name];
+            }
+        }
+
+        /*
+        * starMove()
+        * obj:传入对象this
+        * attr:传入样式名
+        * iTarget:设定样式目标
+        * */
+        function starMove(obj, attr, iTarget) {
+
+            clearInterval(obj.timer);
+
+            obj.timer = setInterval(function () {
+
+                var curStyle = 0;
+                //判断是否为改变透明度，改变透明度单独处理
+                if (attr == 'opacity') {
+                    curStyle = Math.round(parseFloat(getStyle(obj, attr)) * 100);
+                    console.log(attr);
+                }
+                else {
+                    //注意：parseInt是字符串解析
+                    curStyle = parseInt(getStyle(obj, attr));       //获取当前所在的style
+                    console.log(attr);
+                }
+//                console.log(curStyle);
+                var speed = (iTarget - curStyle) / 5;
+                speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+
+                //判断是否为改变透明度，改变透明度单独处理
+                if (curStyle == iTarget) {
+                    clearInterval(obj.timer);
+                }
+                else {
+                    if (attr == 'opacity') {
+                        curStyle += speed;
+                        obj.style[attr] = curStyle / 100;
+                        obj.filter = 'alpha(opacity:' + curStyle + ')';
+                    }
+                    //非透明度样式模板
+                    else {
+                        obj.style[attr] = curStyle + speed + 'px';
+                    }
+                }
+            }, 30)
+        }
+
+    </script>
+</head>
+<body>
+<div id="div1">变宽</div>
+<div id="div2">变高</div>
+<div id="div3">改border</div>
+<div id="div4">改字体大小</div>
+</body>
+</html>

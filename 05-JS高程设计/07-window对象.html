@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var age = 29;
+
+    function sayAge() {
+        var num = 80;
+
+//        console.log(this);
+        function sayName() {
+            console.log('------', this.num)
+        }
+
+        sayName();
+        return this.age;
+    }
+
+    console.log(window.age);
+    console.log(this.age);
+    console.log(this.sayAge());
+    //    console.log(window.sayAge());
+    console.log(window.num);
+    console.log(this.num);
+
+    var sex = 'man';
+    window.color='red';
+    delete window.color;
+    delete this.sex;
+    console.log(window.color);
+    console.log(this.sex);
+
+</script>
+</body>
+</html>

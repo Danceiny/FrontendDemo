@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>41-无缝滚动</title>
+    <style>
+        #bod{margin: 0px;padding: 0px}
+        #div1 {width:712px;height: 108px; margin: 200px auto; padding: 0px ;position: relative;
+            background: red; overflow: hidden; }
+        /*#div ul{margin: auto;}*/
+        #div1 ul {position: absolute;left: 0;top: -16px;
+            width:1400px;}   /*疑问：此处top=0px发现并不能实现覆盖*/
+        #div1 ul li {float: left; width: 178px; height: 108px; list-style: none;}
+    </style>
+
+    <script type="application/javascript">
+        window.onload = function () {
+            var oDiv = document.getElementById('div1');
+            var oUl = oDiv.getElementsByTagName('ul')[0];
+            var aLi = oDiv.getElementsByTagName('li');
+            var oBtn1 = document.getElementById('btn1');
+            var oBtn2 = document.getElementById('btn2');
+            var speed = 2;
+
+            oUl.innerHTML = oUl.innerHTML + oUl.innerHTML;  //复制内容
+            oUl.style.width = aLi[0].offsetWidth * aLi.length + 'px';   //改变oUl的宽度
+
+            function move() {
+                if (oUl.offsetLeft < -oUl.offsetWidth / 2) {
+                    oUl.style.left = '0';
+                }
+                if (oUl.offsetLeft > '0') {
+                    oUl.style.left = -oUl.offsetWidth / 2 + 'px';
+                }
+
+
+                //oUl.style.left = -oUl.offsetLeft/2 + 'px';
+
+                oUl.style.left = oUl.offsetLeft + speed + 'px';
+            }
+
+            var timer = setInterval(move, 30);
+            //移入移出事件
+            oDiv.onmouseover = function () {
+                clearInterval(timer);
+            }
+            oDiv.onmouseout = function () {
+                timer = setInterval(move, 30);
+            }
+            //按钮事件
+            oBtn1.onclick=function () {
+                speed=-2;
+            }
+            oBtn2.onclick=function () {
+                speed=2;
+            }
+        }
+    </script>
+</head>
+<body id="bod">
+<input id="btn1"type="button" value="向左">
+<input id="btn2"type="button" value="向右">
+<div id="div1">
+    <ul>
+        <li><img src="../img/img-move/1.jpg"></li>
+        <li><img src="../img/img-move/2.jpg"></li>
+        <li><img src="../img/img-move/3.jpg"></li>
+        <li><img src="../img/img-move/4.jpg"></li>
+    </ul>
+</div>
+</body>
+</html>

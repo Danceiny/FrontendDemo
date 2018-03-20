@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var myDiv = window.document.createElement('div');
+    window.document.body.appendChild(myDiv);
+    myDiv.style.backgroundColor = 'yellow';
+    myDiv.style.cssText = 'width:250px;height:300px;background-color:red';
+    console.log(myDiv);
+    console.log(typeof(getPropertyCSSValue));
+    var prop, value, i, len;
+    for (i = 0, len = myDiv.style.length; i < len; i++) {
+        prop = myDiv.style.item(i);
+        value = myDiv.style.getPropertyCSSValue(prop);//此方法已经废弃
+        console.log("prop:", prop, "cssText:", value.cssText, "value:", value)
+    }
+</script>
+</body>
+</html>

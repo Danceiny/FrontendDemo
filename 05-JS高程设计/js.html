@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<!--<style>
+    body {
+        margin: 0;
+        padding: 0;
+        /*position: relative;*/
+        display: flex;
+    }
+
+    /*#left {
+    background-color: green;
+    float: left;
+    width: 220px;
+    margin-right: -100%;
+    }
+
+    #content {
+    float: left;
+    width: 100%;
+    }*/
+
+    /*#contentInner {*/
+    /*margin-left: 220px; !*==等于左边栏宽度值==*!*/
+    /*background-color: orange;*/
+    /*}*/
+
+    #left {
+        /*width: 200px;*/
+        /*display: inline-block;*/
+        background: #ccc;
+        flex: 0 1 200px;
+    }
+
+    #content {
+        /*display: inline-block;*/
+        /*width: 100%;*/
+        background: yellow;
+        /*position: absolute;*/
+        /*left: 200px;*/
+        flex:0 1 auto;
+    }
+</style>-->
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        /*position: relative;*/
+        display: flex;
+    }
+    #left {
+        /*width: 200px;*/
+        /*display: inline-block;*/
+        background: #ccc;
+        flex: 0 1 200px;
+    }
+
+    #content {
+        /*display: inline-block;*/
+        /*width: 100%;*/
+        background: yellow;
+        /*position: absolute;*/
+        /*left: 200px;*/
+        flex:0 1 100%;
+    }
+</style>
+<script>
+   /* function fn() {
+        var max = 10;
+        return function bar(x) {
+            if (x > max) {
+                console.log(x)
+            }
+        }
+    }
+
+    //    var f1=fn();
+    fn(15);
+    var l = 1 && 2;
+    console.log(l);
+    setInterval(function () {
+
+    })*/
+
+
+   function Foo() {
+       getName = function () { alert (1); };
+       return this;
+   }
+   Foo.getName = function () { alert (2);};
+   Foo.prototype.getName = function () { alert (3);};
+   var getName = function () { alert (4);};
+   function getName() { alert (5);}
+
+   //请写出以下输出结果：
+   Foo.getName(); //2
+   getName();   //4
+   Foo().getName(); //1
+   getName();   //1
+   new Foo.getName(); //2
+   new Foo().getName(); //3
+   new new Foo().getName(); //3
+</script>
+
+<body>
+<!--<div id="left">Left sidebar</div>-->
+<!--<div id="content">Main Content</div>-->
+
+<div id="left">
+    Left Sidebar
+</div>
+<div id="content">
+    <div id="contentInner">
+        Main Content
+    </div>
+</div>
+<!--<div style="width:100%;border:5px solid red; height: 50px;"></div>-->
+</body>
+</html>

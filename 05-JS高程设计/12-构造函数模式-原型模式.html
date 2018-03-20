@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script>
+    function Person(name, age, job) {
+        this.name = name;
+        this.age = age;
+        this.job = job;
+        this.friends = ['Jack', 'Tony']
+    }
+
+    Person.prototype = {
+        constructor: Person,
+//        name:'xiaao',
+        sayName: function () {
+            alert(this.name)
+        }
+    }
+    var person1 = new Person('Lusi', 23, 'student')
+//    var person2 = new Person('Mark', 33, 'teacher')
+    var person2 = new Person()
+    person2.name='mark'
+
+    person1.friends.push('weiy')
+    console.log(person1.name, person1.age, person1.friends)
+    console.log(person2.name, person2.age, person2.friends)
+    person1.sayName()
+    person2.sayName()
+</script>
+<body>
+
+</body>
+</html>

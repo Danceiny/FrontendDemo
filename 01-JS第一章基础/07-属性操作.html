@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>属性操作</title>
+</head>
+<body>
+<input type="button" id="btn" value="按钮" style="width: 150px; height: 50; background-color: lightgrey;
+font-size:20px;">
+<script>
+    /*
+     * 属性操作方式
+     * 1、 .的
+     *       元素名.属性
+     *       如果属性是单一属性，用.操作是取不到的，而且还会报错。
+     *       如果想用点操作符去操作带有横杠-的属性，先要把横杠去掉，再把横岗后面的首字母大写。
+     *2、 ['属性']的
+     *       如果元素中带有横杠，用[]去操作属性。
+     *
+     * */
+    var btn = document.getElementById('btn');
+    btn.onclick = function () {
+        btn.style.width = '300px';
+        btn.style.height = '100px';
+        btn.style.backgroundColor = 'red';    //第二个首字母大写
+        btn.style['font-size'] = '50px';  //使用['属性']操作
+        console.log(btn.value);     //控制台输出“按钮”
+
+        // font-size    这个属性不能用点直接去获取，因为JS不认横杠
+        //console.log(btn.font-size);
+        console.log(btn.style['font-size']);
+        //如果想用点操作符去操作带有横杠-的属性，先要把横杠去掉，再把横岗后面的首字母大写。
+        console.log(btn.style.fontSize);
+    }
+</script>
+</body>
+</html>

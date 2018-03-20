@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <title>测试</title>
+    <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+        function loadXMLDoc() {
+            // var xmlhttp;
+            // if (window.XMLHttpRequest) {
+            //     //  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+            //     xmlhttp = new XMLHttpRequest();
+            // }
+            // else {
+            //     // IE6, IE5 浏览器执行代码
+            //     xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            // }
+            // console.log(xmlhttp);
+            // xmlhttp.onreadystatechange = function () {
+            //     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            //         debugger;
+            //         console.log(xhr.responseText); // 这是返回的文本
+            //         document.getElementById("myDiv").innerHTML = xmlhttp.responseText;
+            //     }
+            // };      
+            // var url = 'http://api.alice.com/cors';
+            // var xmlhttp = new XMLHttpRequest();
+            // xmlhttp.open('PUT', url, true);
+            // xmlhttp.setRequestHeader('X-Custom-Header', 'value');
+            // xmlhttp.send();
+
+
+            $.ajax({
+                url: "http://xiaao.xin:8080/sell/static/data.json",
+                dataType: 'json',
+                type: 'POST',
+                AccessControlAllowOrigin:'*',
+                beforeSend: function (xhr) {
+                    debugger;
+                    xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
+                
+                    debugger;
+                },
+                //contentType: 'application/x-www-form-urlencoded',  
+                success: function (sResponse) {
+                    debugger;
+                }
+            });
+
+        }
+    </script>
+</head>
+
+<body>
+    <div id="myDiv">
+        <h2>使用 AJAX 修改该文本内容</h2>
+    </div>
+    <button type="button" onclick="loadXMLDoc()">修改内容</button>
+</body>
+
+</html>

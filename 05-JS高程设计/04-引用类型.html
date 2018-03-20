@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    /*作为值的函数*/
+    function callfunction(someFunction, someArgument) {
+        return someFunction(someArgument);
+    }
+
+    function add10(num) {
+        return num + 10;
+    }
+
+    var result = callfunction(add10, 20);
+    console.log(result);
+
+    //    函数内部属性
+    function factorial(num) {
+        if (num <= 1)
+            return 1;
+        return num * arguments.callee(num - 1);
+    }
+
+    console.log(factorial(5)); // 存储的是指针
+
+    var Factorial = factorial;
+    factorial = function (num) {
+        return 0;
+    }
+    console.log(Factorial(6));
+    console.log(factorial(4));
+    console.log(Factorial(6));
+
+
+    //    函数属性
+    function sum(num1, num2) {
+        return num1 + num2;
+    }
+
+
+    function callsum1(num1, num2) {
+        return sum.apply(this, arguments);  //用arguments将参数传入
+    }
+
+
+    function callsum2(num1, num2) {
+        return sum.apply(this, [num1, num2])
+    }
+
+    console.log(callsum1(10, 40));
+    console.log(callsum2(10, 40));
+
+
+    //    var st = 'some text';
+    var st = Object;
+    st.color = 'red';
+    console.log(st);
+    console.log(st.color);
+
+
+    //    字符串
+    var stringValue1 = 'hello';
+    var stringConcat1 = stringValue1.concat(' word ', ' !');
+    var stringConcat2 = stringValue1 + 'xiaao' + 'hhhhh';
+    console.log(stringConcat1);
+    console.log(stringConcat2);
+</script>
+</body>
+</html>

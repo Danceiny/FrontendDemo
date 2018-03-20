@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>时钟例子</title>
+    <script>
+        //toDouble  将0-9之间的数转换为01-09的两位字符串
+        function toDouble(n) {
+            if(n<10){
+                return  '0'+n;
+            }
+            else{
+                return ''+n;    //前面加''是让返回的是一个字符串
+            }
+        }
+        window.onload = function () {
+            var aImg = document.getElementsByTagName('img');
+
+            function tick() {
+                var oDate = new Date();
+                //alert(oDate.getHours());
+                var str=toDouble(oDate.getHours())+toDouble(oDate.getMinutes())+toDouble(oDate.getSeconds());
+                //alert(str);
+
+                for (var i = 0; i < aImg.length; i++) {
+                    aImg[i].src = '../img/img-timer/'+str.charAt(i)+'.png';
+                }
+            }
+
+            setInterval(tick,1000);
+            tick();     //先执行一次，不会遇到setInterval等待1s之后再执行的情况
+
+        }
+
+
+    </script>
+
+
+</head>
+<body style="background: black; margin: 0px; color: white; font-size: 60px">
+<div id="div">
+    <img src="../img/img-timer/1.png">
+    <img src="../img/img-timer/0.png">:
+    <img src="../img/img-timer/1.png">
+    <img src="../img/img-timer/7.png">:
+    <img src="../img/img-timer/1.png">
+    <img src="../img/img-timer/1.png">
+
+</div>
+</body>
+</html>

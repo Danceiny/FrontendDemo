@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>getElementsByTagName</title>
+    <script>
+        /*
+         * getElementsByTagName
+         * 通过id名去获取一个元素，他取得的一组元素
+         * 主语
+         *       document 从整个文档里去获得class元素
+         *       父级      从父级去获得class元素。
+         *
+         *    获取到的是一个集合，类数组
+         *
+         * */
+
+        window.onload = function () {
+           //
+            var lis=document.getElementsByTagName('li');
+            console.dir(lis);
+
+            //获取：用下标的方式获取内容
+            lis[2].style.backgroundColor='yellow';
+        }
+    </script>
+</head>
+    <ul id="color">
+        <li>red</li>
+        <li class="green">green</li>
+        <li>yellow</li>
+        <li>blue</li>
+        <li>pink</li>
+        <li>orange</li>
+    </ul>
+    <ul>
+        <li>red</li>
+        <li class="green">green</li>
+        <li>yellow</li>
+        <li>blue</li>
+        <li>pink</li>
+        <li>orange</li>
+    </ul>
+    </body>
+</html>

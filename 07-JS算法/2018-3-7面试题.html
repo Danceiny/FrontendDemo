@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>笔试</title>
+</head>
+<body>
+<script type="text/javascript">
+    //1
+    /* function createFunctions() {
+         var result = new Array();
+         for (var i = 0; i < 5; i++) {
+             result[i] = function () {
+                 return this.i;
+             }
+         }
+         return result;
+     }
+
+     var funcs = createFunctions();
+     console.log(funcs)
+     for (var i = 0; i < funcs.length; i++) {
+         console.log(funcs[i])
+     }*/
+
+
+    //2
+    /* var funs= function () {
+         console.log('1');
+         setTimeout(function () {
+             console.log('2')
+         },0)
+         console.log('3')
+     }
+     funs();*/
+
+    //3
+    /*(() => {
+        for (var i = 0; i < 10; i++) {
+            setInterval(() => {
+                var data = {a: 10, b: 20};
+                console.log('第'+i+'条数据：'+data)
+            },1000)
+        }
+    })()*/
+
+    //9
+
+    //11
+    /*  let arr= ['name','first','5','7','4','3','7','9']
+      let res=[]
+      for(let i=0; i<arr.length;i++){
+          res[i]=arr[arr.length-1-i]
+  //        res.push(arr[arr.length-1-i])
+      }
+      console.log(res)*/
+
+    //12
+    let arr = [20, 37,21, 20, 20, 20, 21, 20, 21, 21, 21]
+
+    function outputNth(array, n) {
+        let res = [], temp;
+        array.map(function (v, i) {
+            temp = 0;
+            arr.map(function (v2, i2) {
+                if (v === v2) {
+                    temp++;
+                }
+                if (temp > n) {
+                    console.log(this)
+//                    debugger
+                    this.splice(i2, 1)
+                    temp--;
+                }
+            }, array)
+        }, array)
+        return array;
+    }
+
+    outputNth(arr, 2);
+    console.log(arr)
+</script>
+</body>
+</html>

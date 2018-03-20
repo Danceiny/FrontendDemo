@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件绑定</title>
+    <script>
+        window.onload = function () {
+            var oBtn = document.getElementById('btn');
+
+//            解决兼容性问题，JS第二准则，好的东西基本不会兼容
+            if (oBtn.attachEvent) {
+                //IE下
+//            oBtn.attachEvent(事件名, 函数)
+                oBtn.attachEvent(onclick, function () {
+                    alert('a');
+                });
+
+                oBtn.attachEvent(onclick, function () {
+                    alert('b');
+                });
+            }
+            else {
+                //chrome FF下
+//            oBtn.attachEvent(事件名, 函数, false)
+                oBtn.addEventListener('click', function () {
+                    alert('a');
+                }, false);
+                oBtn.addEventListener('click', function () {
+                    alert('b');
+                }, false)
+            }
+
+
+        }
+    </script>
+</head>
+<body>
+<button id="btn">提交</button>
+</body>
+</html>

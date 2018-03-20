@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!--<meta http-equiv="Access-Control-Allow-Origin" content="*">-->
+    <title>测试</title>
+    <!--<script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>-->
+    <script>
+
+        /******************************CORS方法**********************************/
+        function loadJSONDoc() {
+            var xmlhttp;
+            //检验浏览器
+            if (window.XMLHttpRequest) {
+                //  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+                xmlhttp = new XMLHttpRequest();
+            }
+            else {
+                // IE6, IE5 浏览器执行代码
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            console.log(xmlhttp);
+
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState === 4) {
+                    console.log(xmlhttp);
+                    if (xmlhttp.status >= 200 && xmlhttp.status < 300 || xmlhttp.status === 304) {
+
+                        //                        console.log(xmlhttp.responseText); // 这是返回的文本
+                        document.getElementById("myDiv").innerHTML = xmlhttp.responseText;
+                    }
+
+                }
+            };
+            var url = 'http://xiaao.xin:8080/sell/static/data.json';
+            xmlhttp.open('GET', url, true);
+            xmlhttp.send();
+
+        }
+
+
+        /******************************图像Ping方法**********************************/
+        /*function loadXMLDoc() {
+            var img = new Image();
+            img.onload = img.onerror = function () {
+                console.log("dddddd");
+                console.log(img);
+            };
+            img.src = "http://xiaao.xin:8080/sell/static/data.json";
+        }*/
+
+
+        /******************************JSONP方法**********************************/
+        /* function loadJSONDoc() {
+             function addScriptTag(src) {
+                 var script = document.createElement('script');
+                 script.setAttribute("type", "text/javascript");
+                 script.src = src;
+                 document.body.appendChild(script);
+             }
+
+             window.onload = function () {
+                 addScriptTag('http://xiaao.xin:8080/sell/static/data.json');
+             }
+
+             function foo(data) {
+                 console.log('response data: ' + JSON.stringify(data));
+             };
+             foo();
+         }*/
+
+        var val = true;
+        console.log('Value is ' + (val != '0') ? 'define' : 'undefine');
+
+    </script>
+</head>
+
+<body>
+<div id="myDiv">
+    <h2>使用 AJAX 修改该文本内容</h2>
+</div>
+<button type="button" onclick="loadJSONDoc()">修改内容</button>
+</body>
+
+</html>
+

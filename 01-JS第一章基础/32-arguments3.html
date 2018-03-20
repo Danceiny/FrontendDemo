@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>32-arguments3</title>
+    <script>
+        function css(obj, name, val ) {
+            if (arguments.length == 2) {
+                return obj.style[name];
+            }
+            else {
+                obj.style[name]=val;
+            }
+        }
+        window.onload=function(){
+            var oDiv=document.getElementById('div');
+            alert(css(oDiv, 'height')); //获取div的宽度
+            css(oDiv,'background','red')    //设置div的样式
+        }
+    </script>
+</head>
+<body>
+<div id="div" style="width: 200px;height: 200px; background: #000;"
+</body>
+</html>

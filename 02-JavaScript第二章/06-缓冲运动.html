@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>缓冲运动</title>
+    <style>
+        #div1 {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            left:1000px;
+            top: 100px;
+        }
+
+        #div2 {
+            height: 300px;
+            width: 1px;
+            position: absolute;
+            top: 0;
+            left: 500px;
+            border-left: 1px solid black;
+        }
+    </style>
+
+    <script>
+        var timer = null;
+        function startMove() {
+            var oDiv = document.getElementById('div1');
+            clearInterval(timer);
+
+            setInterval(function () {
+                var speed = (500 - oDiv.offsetLeft) / 10;
+
+                //正数向上取整，负数向下取整.
+                //speed=Math.ceil(speed);
+                speed= speed>0? Math.ceil(speed):Math.floor(speed);
+
+                oDiv.style.left = oDiv.offsetLeft + speed + 'px';
+                console.log(speed);
+                document.title=oDiv.offsetLeft+','+speed;
+            }, 30);
+        }
+    </script>
+</head>
+<body>
+<button onclick="startMove()">向右滑动</button>
+<div id="div1"></div>
+<div id="div2"></div>
+</body>
+</html>

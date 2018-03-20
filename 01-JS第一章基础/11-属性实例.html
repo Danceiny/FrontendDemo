@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>属性实例</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 100px;
+            background-color: aquamarine;
+            margin: 20px;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+<input type="text" id="text1">
+<input type="text" id="text2">
+<input type="button" id="btn" value="确认">
+<div id="box">这是一个box</div>
+
+<script>
+    /*
+    * 需求：点击按钮获取输入框的属性名称和属性值，并根据获取到的内容进行操作
+    *
+    * 分析：
+    *     1、获取输入框、按钮、box
+    *     2、给按钮添加点击事件
+    *     3、获取到输入框的内容
+    *     4、改变box的样式。
+    * */
+    var text1 = document.getElementById('text1');
+    var text2 = document.getElementById('text2');
+    var btn = document.getElementById('btn');
+    var box = document.getElementById('box');
+
+    btn.onclick = function () {
+        var name = text1.value;
+        var val = text2.value;
+
+        //console.log(name,val);
+        /*
+         * 点操作属性的时候，后面只能跟真正的属性名称，不能跟变量名。
+         * []操作的时候，里面可以放属性名和变量名，如果放的是属性名，那要加引号，如果放的是变量名，不能加引号
+         * */
+        //box.style.name = val;   //错误写法，name不是真正的属性名称
+        box.style[name] = val;    //不使用引号
+    }
+
+
+</script>
+</body>
+</html>

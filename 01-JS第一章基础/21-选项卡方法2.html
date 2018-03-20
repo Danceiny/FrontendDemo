@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>21-选项卡方法2</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            border: 1px solid #94ff74;
+            display: none;
+        }
+    </style>
+    <script>
+        /*
+         * 需求：点击按钮显示对应的div，并让其他的按钮的背景色去掉，隐藏相应的div
+         * 关键点：获取上一个点击的input
+         * 分析：
+         *   1、获取到所有的按钮和div
+         *   2、给每一个按钮添加点击事件
+         *       1、把所有点击按钮的背景色去掉
+         *       2、把所有的div隐藏
+         *       3、给当前点击的按钮添加一个背景颜色
+         *       4、让当前点击按钮对应的div显示
+         *
+         * */
+        window.onload = function () {
+            var inputs = document.querySelectorAll('input');
+            var divs = document.querySelectorAll('div');
+            var last=inputs[0];     //last存取上一次的点击对象，默认为0
+
+            //给每一个按钮添加点击事件,采用for循环，注意对象，采用this
+            for (var i = 0; i < inputs.length; i++ ) {
+
+                inputs[i].index=i;  //给每一个按钮添加一个自定义属性，存的是对应的索引值。主要是给divs作用
+
+                inputs[i].onclick=function () {
+                    //点击的时候一下来要把所有的样式清空，需要执行所有格式化操作。
+                    for(var i=0; i<inputs.length;i++){
+                        inputs[i].style.background='';   //所有按钮背景色为空
+                        divs[i].style.display='none';  //所有div隐藏
+                    }
+                    //当前点击按钮的操作样式
+                    this.style.background='greenyellow';    //当前按钮变成灰绿色
+                    divs[this.index].style.display='block'; //显示当前按钮对应的的div
+
+                    //把上一次点击对象更新成当前点击对象，这一步很重要。
+                    //last=this;
+                }
+            }
+        }
+    </script>
+
+</head>
+<body>
+<input type="button" id="" value="选项一" style="background: greenyellow">
+<input type="button" id="" value="选项二">
+<input type="button" id="" value="选项三">
+<div style="display:block">内容一</div>
+<div>内容二</div>
+<div>内容三</div>
+</body>
+</html>

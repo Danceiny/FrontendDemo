@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>window_onload</title>
+
+    <script>
+        window.onload = function () {
+            document.getElementById("btn").onclick = function () {
+                document.getElementById("btn").style.background = 'green';
+            }
+        }
+    </script>
+</head>
+<body>
+<input type="button" id="btn" value="击我" style="background-color: aqua"/>
+<script>
+    /*
+     * window.onload什么时候用？
+     * 当代码需要获取页中的元素，如果这个script放在元素前面，就需要使用window.onload
+     * 如果script放在了元素后面，就不需要使用window.onload
+     * */
+</script>
+</body>
+</html>

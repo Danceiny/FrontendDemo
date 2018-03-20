@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>父节点</title>
+
+    <script>
+        window.onload = function () {
+            /*
+             * parentNode 父节点
+             *
+             * */
+
+            var aA = document.getElementsByTagName('a');
+
+            for (var i = 0; i < aA.length; i++) {
+                aA[i].onclick = function () {
+                    this.parentNode.style.display = 'none';
+                    alert(this.parentNode.style.display );
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<ul>
+    <li>123<a href="javascript:;">隐藏</a></li>
+    <li>qwe<a href="javascript:;">隐藏</a></li>
+    <li>cfvd<a href="javascript:;">隐藏</a></li>
+    <li>tfgedter<a href="javascript:;">隐藏</a></li>
+    <li>fgs<a href="javascript:;">隐藏</a></li>
+    <li>hrtf<a href="javascript:;">隐藏</a></li>
+
+</ul>
+</body>
+</html>

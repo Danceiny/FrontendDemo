@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数</title>
+    <script>
+        /*
+         * 需求：点击任何一个按钮，改变img的宽度、高度、margin、padding等属性
+         * */
+        window.onload = function () {
+            var btn1 = document.getElementById('btn1');
+            var btn2 = document.getElementById('btn2');
+            var img1 = document.getElementById('img1');
+
+            //给每个按钮添加事件
+            btn1.onclick = function () {
+                //点击后要执行的内容
+                setStyle();
+            }
+            btn2.onclick = function () {
+                setStyle();
+            }
+            //函数复用
+            function setStyle() {
+                img1.style.height = '500px';
+                img1.style.width = '800px';
+                img1.style.padding = '20px';
+                img1.style.margin = '50px';
+            }
+        }
+    </script>
+
+</head>
+<body>
+<input type="button" id="btn1" value="按钮1">
+<input type="button" id="btn2" value="按钮2"><br>
+<img id="img1" src="../img/DSC_0052.jpg" alt="工大花海" width="300px" height="250px">
+
+</body>
+</html>

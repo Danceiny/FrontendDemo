@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>19-querySelectAll</title>
+    <script>
+        /*
+         * querySelectAll
+         * 通过CSS选择器去获取一组元素
+         * 它只获取一组元素，是一个类数组
+         *
+         * 主语
+         *       document 从整个文档里去获得class元素
+         *       父级      从父级去获得class元素。
+         *
+         * */
+
+        window.onload = function () {
+            //获取所有li元素
+            var li = document.querySelectorAll('li');
+            console.dir(li);
+
+            //获取id为color下的li元素
+            //方法1
+            var color = document.getElementById('color');
+            var lis1 = color.querySelectorAll('li');
+            console.dir(lis1);
+            //方法2
+            var lis2 = document.querySelectorAll('#color2 li');
+            console.dir(lis2);
+
+            var lis3=document.querySelectorAll('#color ul li ');//或者'#color>li>ul>li'
+            console.dir(lis3);
+            lis3[lis3.length-1].style.background='black';
+        }
+    </script>
+</head>
+<body>
+<ul id="color">
+    <li>red</li>
+    <li class="green">green</li>
+    <li>yellow</li>
+    <li>blue</li>
+    <li>
+        <ul>
+            <li>pink</li>
+            <li>white</li>
+            <li>black</li>
+        </ul>
+
+    </li>
+    <li>orange</li>
+</ul>
+<ul id="color2">
+    <li>red</li>
+    <li class="green">green</li>
+    <li class="yellow">yellow</li>
+    <li>blue</li>
+    <li>pink</li>
+    <li>orange</li>
+</ul>
+</body>
+</html>

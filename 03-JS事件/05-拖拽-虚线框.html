@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>拖拽-虚线</title>
+    <style>
+        #div2 {
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: absolute;
+        }
+        .box{
+            border:#C9C5C5 solid 1px;
+            position: absolute;
+        }
+
+
+    </style>
+
+    <script>
+        window.onload = function () {
+            var oDiv = document.getElementById('div2');
+//            var oDiv1 = document.getElementById('div1');
+
+            var disX = 0;
+            var disY = 0;
+
+            //按下鼠标事件
+            oDiv.onmousedown = function (ev) {
+
+                var oEvent = ev || event;
+
+                disX = oEvent.clientX - oDiv.offsetLeft;
+                disY = oEvent.clientY - oDiv.offsetTop;
+
+                var oBox=document.createElement('div');
+                oBox.className='box';
+                oBox.style.width=oDiv.offsetWidth-2+'px';   //-2是因为boder有宽度
+                oBox.style.height=oDiv.offsetHeight-2+'px';
+
+                oBox.style.left=oDiv.offsetLeft+'px';   //每一次虚框都出现在div的原位置
+                oBox.style.top=oDiv.offsetTop+'px';
+
+                document.body.appendChild(oBox);
+
+                //移动鼠标事件
+                document.onmousemove = function (ev) {
+                    var oEvent = ev || event;
+                    var l = oEvent.clientX - disX;
+                    var t = oEvent.clientY - disY;
+
+                    /*防止出边框*/
+                    if (l < 0) {
+                        l = 0;
+                    }
+                    //fullScreen
+                    else if (l > document.documentElement.clientWidth - oDiv.offsetWidth) {
+                        l = document.documentElement.clientWidth - oDiv.offsetWidth;
+                    }
+
+                    if (t < 0) {
+                        t = 0;
+                    }
+                    //同理
+                    else if (t > document.documentElement.clientHeight - oDiv.offsetHeight) {
+                        t = document.documentElement.clientHeight - oDiv.offsetHeight;
+                    }
+
+                    oBox.style.left = l + 'px';
+                    oBox.style.top = t + 'px';
+                };
+
+                //松开鼠标之后事件
+                document.onmouseup = function () {
+
+                    document.onmousemove = null;
+                    document.onmouseup = null;
+
+                    oDiv.style.left=oBox.style.left;
+                    oDiv.style.top=oBox.style.top;
+                    document.body.removeChild(oBox);
+                };
+
+                return false;   //阻止默认行为，很有用
+            }
+
+
+        }
+    </script>
+</head>
+<body>
+<div id="div1">
+    <div id="div2"></div>
+</div>
+</body>
+</html>
