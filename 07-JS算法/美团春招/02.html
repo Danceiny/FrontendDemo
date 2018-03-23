@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+
+    /**  **/
+    function aliceAdd(n) {
+        if (n < 2)
+            return alert('请输入大于2的数')
+        else {
+            let k = 1, count = 0;
+            //相邻两个点的线段
+            count+=n;
+            //去除相邻两个点
+            count+=n-3;
+            return count;
+        }
+    }
+
+    console.log(aliceAdd(6))
+</script>
+</body>
+</html>

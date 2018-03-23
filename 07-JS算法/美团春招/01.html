@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /**某一天，Alice 比较无聊，于是她为自己发明了一个游戏玩。首先她在纸上画了一个圆，然后从这个圆的圆弧上均匀地取出 n 个点，这 n 个点将圆 n 等分。接下来，Alice 每次从这 n个点中选取两个点，在这两个点之间画一条线段，但是要求这条线段不能与已有的线段相交（允许在端点处相交）。为了能打发更多的时间，Alice 希望能画尽量多的线段，请你告诉她最多她能画出几条线段？
+     * **/
+
+    /**  **/
+    function aliceAdd(n) {
+        if (n < 2)
+            return alert('请输入大于2的数')
+        else {
+            let k = 1, count = 0;
+            //相邻两个点的线段
+            count+=n;
+            //去除相邻两个点
+            count+=n-3;
+            return count;
+        }
+    }
+
+    console.log(aliceAdd(6))
+</script>
+</body>
+</html>

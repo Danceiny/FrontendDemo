@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .test {
+            width: 200px;
+            height: 200px;
+            border: 1px solid;
+            /*animation-play-state: paused;*/
+        }
+
+        .test:hover {
+            animation: 2s showColor   alternate 3 both cubic-bezier(.13,1.13,.79,.15) running;
+        }
+
+        @keyframes showColor {
+            0% {
+                background-color: red;
+                width: 400px;
+            }
+            20%,80% {
+                background-color: yellow;
+                height:100px;
+            }
+            50% {
+                background-color: orange;
+                height:400px;
+                width: 600px;
+            }
+            100% {
+                background-color: black;
+                height:200px;
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="test"></div>
+</body>
+</html>

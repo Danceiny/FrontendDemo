@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>flex</title>
+    <style type="text/css">
+        body, html {
+            margin: 0;
+            padding: 0;
+        }
+
+        .left, .right, .center {
+            height: 200px;
+            display: inline-block;
+        }
+
+        .left {
+            width: 120px;
+            margin-right: 120px;
+            background: yellow;
+        }
+
+        .right {
+            width: 120px;
+            float: right;
+            background: green;
+        }
+
+        .center {
+            margin: 0 -120px;
+            width: 100%;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div class="layout">
+    <div class="left"></div>
+    <div class="right"></div>
+    <div class="center"></div>
+</div>
+</body>
+</html>

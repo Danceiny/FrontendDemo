@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>三栏式布局</title>
+    <style type="text/css">
+        body, html {
+            margin: 0;
+            padding: 0;
+        }
+
+        .left, .right, .center {
+            height: 200px;
+        }
+
+        .left {
+            float: left;
+            width: 120px;
+            background: yellow;
+            overflow: hidden;
+        }
+
+        .right {
+            float: right;
+            width: 120px;
+            background: green;
+        }
+
+        .center {
+            background: red;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<div class="layout">
+    <div class="left">left</div>
+    <div class="right">right</div>
+    <div class="center">center
+        <div class="center-right" style="float: right;">center-right</div>
+    </div>
+</div>
+</body>
+</html>

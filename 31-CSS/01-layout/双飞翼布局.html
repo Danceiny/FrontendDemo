@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>圣杯布局</title>
+    <style type="text/css">
+        body, html {
+            margin: 0;
+            padding: 0;
+        }
+
+        .left, .right, .content {
+            height: 200px;
+        }
+        .left{
+            float: left;
+            width: 120px;
+            margin-left:-100%;
+            background: yellow;
+        }
+        .right{
+            float: left;
+            width: 120px;
+            margin-left:-120px;
+            background: green;
+        }
+        .center{
+            float: left;
+            width:100%;
+
+        }
+        .content{
+            margin:0 120px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div class="layout">
+    <div class="center">
+        <div class="content">content</div>
+    </div>
+    <div class="left">left</div>
+    <div class="right">right</div>
+</div>
+</body>
+</html>

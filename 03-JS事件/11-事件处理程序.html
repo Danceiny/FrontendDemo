@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件</title>
+</head>
+<body>
+<div class="par">
+    <div class="son">
+        <button class="btn1">click1</button>
+    </div>
+    <div class="son">
+        <button class="btn2">click2</button>
+    </div>
+</div>
+<script type="text/javascript">
+    let btn1 = document.getElementsByClassName('btn1')[0];
+    let btn2 = document.getElementsByClassName('btn2')[0];
+    let son = document.getElementsByClassName('son')[0];
+    let parent = document.getElementsByClassName('par')[0];
+
+
+    /** DOM2级事件处理程序  浏览器兼容
+     * IE-attachEvent()  detachEvent()
+     * 其他-addEventListener()  removeEventListener()
+     * EventUtil: 全局对象
+     * 使用：EventUtil.addHandler(ele,type,handler)
+     * **/
+    let EventUtil = {
+        addHandler: (element, type, handler) => {
+            if (element.addEventListener) {
+                element.addEventListener(type, handler, false)
+            } else if (element.attachEvent) {
+                element.attachEvent('on' + type, handler)
+            } else {
+                element['on' + type] = handler;
+            }
+        },
+        removeHandler: (element, type, handler) => {
+            if (element.removeEventListener) {
+                element.removeEventListener(type, handler, false)
+            } else if (element.detachEvent()) {
+                element.detachEvent('on' + type, handler)
+            } else {
+                element['on' + type] = null;
+            }
+        }
+    }
+
+    let handler1 = (event) => {
+        event.stopPropagation()
+        event.eventPhase
+        console.log(event)
+        alert('btn');
+    }
+    let handler2 = () => {
+        console.log(event.eventPhase)
+        alert('son');
+    }
+    let handler3 = () => {
+        console.log(event.eventPhase)
+        alert('parent');
+    }
+    //测试事件冒泡
+    EventUtil.addHandler(btn1, 'click', handler1)
+    EventUtil.addHandler(son, 'click', handler2)
+    EventUtil.addHandler(parent, 'click', handler3)
+
+
+</script>
+</body>
+</html>

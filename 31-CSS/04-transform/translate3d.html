@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .tans {
+            width: 100px;
+            height: 100px;
+            background: yellow;
+            /*border-radius:50% ;*/
+            /*transform: Rotate(45deg)*/
+        }
+
+        .tans:hover {
+            animation: xy 4s alternate infinite;
+        }
+
+        @keyframes xy {
+            0% {
+                transform: translate3d(0px, 0px, 0px)
+            }
+            25% {
+                transform: translate3d(50px, 50px, 100px)
+            }
+            50% {
+                transform: translate3d(100px, 100px, 200px)
+            }
+
+            75% {
+                transform: translate3d(0px, 0px, 0px)
+            }
+            100% {
+                transform: translate3d(0px, 0px, 0px)
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="tans"></div>
+</body>
+</html>

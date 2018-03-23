@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>flex</title>
+    <style type="text/css">
+        body, html {
+            margin: 0;
+            padding: 0;
+        }
+
+        .left, .right, .center {
+            height: 200px;
+        }
+        .layout{
+            display: flex;
+        }
+        .left{
+            flex:0 1 120px;
+            background: yellow;
+        }
+        .right{
+            flex:0 1 120px;
+            background: green;
+        }
+        .center{
+            flex: 0 1 100%;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div class="layout">
+    <div class="left">left</div>
+    <div class="center">center</div>
+    <div class="right">right</div>
+</div>
+</body>
+</html>

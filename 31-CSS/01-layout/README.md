@@ -1,0 +1,325 @@
+
+## 三栏式布局
+要求：左右两边固定宽度，中间居中，宽度自适应！
+下面探讨一下有关三栏式布局的所有方法
+给定一个[html模板](/template.html), 要求在这个模板上尽可能用多种方法实现三栏式布局
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>flex</title>
+    <style type="text/css">
+        body, html {
+            margin: 0;
+            padding: 0;
+        }
+
+        .left, .right, .center {
+            height: 200px;
+        }
+        .left{
+            background: yellow;
+        }
+        .right{
+            background: green;
+        }
+        .center{
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div class="layout">
+    <div class="left"></div>
+    <div class="center"></div>
+    <div class="right"></div>
+</div>
+</body>
+</html>
+```
+
+### 1、flex布局
+这是CSS3主推的布局模式，目前也是用的最多的，简单来说就是顺着主轴依次放3列，内容在最前，通过order控制显示顺序，通过flex-grow让中间占据全部剩余空间，通过flex-basis设置左、右div的宽度。
+个人也是优先推荐使用flex实现三栏式布局。
+给父元素的display属性设置为flex布局，然后左右元素设定宽度，中间自适应原始宽度设置为100%，如果顺序不对，使用使用order属性重新排序。
+```css
+.layout{
+    display: flex;
+}
+.left{
+    flex:0 1 120px;
+    background: yellow;
+}
+.right{
+    flex:0 1 120px;
+    background: green;
+}
+.center{
+    flex: 0 1 100%;
+    background: red;
+}
+```
+### 2、绝对定位
+左右元素设置position设置为绝对定位，便脱离的文档流，然后中间元素的`margin-left`和`margin-right`设置为左右元素的宽度。
+注意：right如果在文档流最后要设置top=0，一般选择将right文档流放在center元素之前。
+```css
+.left{
+    position: absolute;
+    left:0;
+    width: 120px;
+    background: yellow;
+}
+.right{
+    position: absolute;
+    right:0;
+    top:0;
+    width: 120px;
+    background: green;
+}
+.center{
+    margin-left: 120px;
+    margin-right: 120px;
+    /*width:100%;*/
+    background: red;
+}
+```
+
+### 3、float浮动脱离文档流
+其实和绝对定位的原理有点相似，都是是左右元素脱离文档流，不占据中间元素的文档流。
+注意：将中间的内容放在HTML结构的最后，否则右侧会沉在中间内容的下侧
+
+```html
+<div class="layout">
+    <div class="left"></div>
+    <div class="right"></div>
+    <div class="center"></div>
+</div>
+
+.left {
+    float: left;
+    width: 120px;
+    background: yellow;
+}
+
+.right {
+    float: right;
+    width: 120px;
+    background: green;
+}
+
+.center {
+    margin: 0 120px 0 120px;
+    background: red;
+}
+
+```
+### 4、BFC+float不会与浮动区域重叠
+BFC布局有一个很重要的特点，BFC区域不会与float box重叠，BFC区域会保留float部分，利用这个特点，实现三栏式布局
+```html
+.left {
+    float: left;
+    width: 120px;
+    background: yellow;
+    overflow: hidden;
+}
+
+.right {
+    float: right;
+    width: 120px;
+    background: green;
+}
+
+.center {
+    background: red;
+    overflow: hidden;
+}
+```
+### 5、圣杯布局
+原理：将中间文档流放在前面，宽度设置为100%，然后将中间元素、左元素、右元素全部设置为`float：left`，然后给父元素左右margin设置为左右元素宽度，这样，结果就是中间元素占据一整行，左右元素另起一行向左浮动。
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>圣杯布局</title>
+    <style type="text/css">
+        body, html {
+            margin: 0;
+            padding: 0;
+        }
+
+        .left, .right, .center {
+            height: 200px;
+        }
+
+        .layout {
+            margin-left: 120px;
+            margin-right: 120px;
+        }
+
+        .left {
+            float: left;
+            width: 120px;
+            background: yellow;
+        }
+
+        .right {
+            float: left;
+            width: 120px;
+            background: green;
+        }
+
+        .center {
+            float: left;
+            width: 100%;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div class="layout">
+    <div class="center"></div>
+    <div class="left"></div>
+    <div class="right"></div>
+</div>
+</body>
+</html>
+```
+效果如下：
+
+![](https://github.com/Xia-Ao/Notes/blob/master/assets/layout1.png)
+接下来就是想办法把左右元素定位到相对应的位置，这里使用margin负值将元素左移，左边元素左移整个宽度，然后再相对定位到最左边。`margin-left:-100%`将左边元素移动到上面，再使用相对定位，将左边元素移动到父元素margin留出的位置。
+
+```html
+.left {
+float: left;
+width: 120px;
+margin-left: -100%;
+position: relative;
+left: -120px;
+background: yellow;
+}
+```
+
+效果如下：
+
+![](https://github.com/Xia-Ao/Notes/blob/master/assets/layout2.png)
+然后再将右边元素向左移动120px，margin-left:-120px，再相对定位到最右边。
+```html
+.right {
+float: left;
+width: 120px;
+margin-left: -120px;
+position: relative;
+right: -120px;
+background: green;
+}
+
+```
+
+最终效果如下：
+
+![](https://github.com/Xia-Ao/Notes/blob/master/assets/layout3.png)
+
+### 6、双飞翼布局
+出自淘宝前端UED团队，它将内容比作鸟的身体，左右比作双翼，所以叫作双飞翼。
+它与圣杯布局很像，也是全部往左浮动，但是在中间div里再嵌套一个div，设置子div的margin为左右div预留位置，左右div只设置margin负值即可实现。与圣杯布局相比，少了position:relative，多了一个div。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>圣杯布局</title>
+    <style type="text/css">
+        body, html {
+            margin: 0;
+            padding: 0;
+        }
+
+        .left, .right, .content {
+            height: 200px;
+        }
+        .left{
+            float: left;
+            width: 120px;
+            margin-left:-100%;
+            background: yellow;
+        }
+        .right{
+            float: left;
+            width: 120px;
+            margin-left:-120px;
+            background: green;
+        }
+        .center{
+            float: left;
+            width:100%;
+
+        }
+        .content{
+            margin:0 120px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div class="layout">
+    <div class="center">
+        <div class="content">content</div>
+    </div>
+    <div class="left">left</div>
+    <div class="right">right</div>
+</div>
+</body>
+</html>
+```
+
+### 7、table布局
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>flex</title>
+    <style type="text/css">
+        body, html {
+            margin: 0;
+            padding: 0;
+        }
+
+        .left, .right, .center {
+            height: 200px;
+            display: table-cell;
+        }
+        .layout{
+            display: table;
+            width: 100%;
+        }
+        .left{
+            width:120px;
+            background: yellow;
+        }
+        .right{
+            width: 120px;
+            background: green;
+        }
+        .center{
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div class="layout">
+    <div class="left"></div>
+    <div class="center"></div>
+    <div class="right"></div>
+</div>
+</body>
+</html>
+```
+
+缺点：无法设置格间距，并且左右元素display属性不能为none。
+
+后面还有一种说法使用inline-block布局，尝试过之后发现其实并不好用。

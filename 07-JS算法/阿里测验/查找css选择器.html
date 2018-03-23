@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+
+    <title>Document</title>
+</head>
+
+<body>
+
+<div id="page">
+
+    <div class="content main">
+
+        <div class="refer">
+
+            <ul>
+
+                <li>22</li>
+
+                <li>33</li>
+
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    var genCssSelector = function () {
+
+        let selectorArray = [];
+
+        function nodeSelector(element) {
+            let id = '';
+            let className = '';
+            let tagName = '';
+
+            if (element.className || element.id) {
+                if (element.className) {
+                    //检测多个
+                    className = element.className.split(' ').map(item => '.' + item).join('');
+                }
+                if (element.id) {
+                    id = element.id.split(' ').map(item => '#' + item).join('');
+                }
+            } else {
+                tagName = element.nodeName.toLowerCase();
+            }
+
+            selectorArray.unshift(tagName + id + className);
+
+            //  递归直到document为止
+            if (element.parentNode !== document)
+                nodeSelector(element.parentNode);
+        }
+
+        let element = arguments[0];//获取传入的元素。
+        nodeSelector(element);
+        return selectorArray.join(' ');
+
+
+    }
+
+    document.addEventListener('click', function (e) {
+
+        //点击li时，返回：html body #page .content.main .refer ul li
+
+        console.log(genCssSelector(e.target));
+
+    })
+</script>
+</body>
+
+</html>
