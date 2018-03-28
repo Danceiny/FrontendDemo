@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    /**
+     * 一个由小写字母组成的字符串可以看成一些同一字母的最大碎片组成的。
+     * 例如,"aaabbaaac"是由下面碎片组成的:'aaa','bb','c'。牛牛现在给定一个字符串,请你帮助计算这个字符串的所有碎片的平均长度是多少。
+     *
+     * 输出一个整数,表示所有碎片的平均长度,四舍五入保留两位小数。
+
+     如样例所示: s = "aaabbaaac"
+     所有碎片的平均长度 = (3 + 2 + 3 + 1) / 4 = 2.25
+     *
+     * **/
+    function strPic(s) {
+        let sArr = s.split('');
+        let len, res = [], num = 0;
+        for (let i = 0; i < sArr.length; i += len) {
+
+            for (let j = i + 1; j <= sArr.length; j++) {
+                len = j - i;
+                if (sArr[i] !== sArr[j]) {
+                    res.push(len);
+                    break;
+                } else if (j === sArr.length) {  //这一步很关键，判断最后一个片段，如果是，最后一个片段，要加上最后一个本身+1
+                    res.push(1 + len);
+                }
+            }
+
+        }
+        for (let v of res) {
+            num += v;
+        }
+        return num / res.length;
+    }
+
+    //在字符串编码里面有一种更简单的方法。
+
+    console.log(strPic('aaabbaaaccc'));
+</script>
+</body>
+</html>

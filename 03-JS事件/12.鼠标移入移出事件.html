@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #parent {
+            background: #CCCCCC;
+            height: 300px;
+            width: 300px;
+        }
+
+        #son {
+            background: yellow;
+            height: 100px;
+            width: 100px;
+
+        }
+    </style>
+</head>
+<body>
+<div id="parent">
+    <div id="son">
+
+    </div>
+</div>
+<script src="eventUtil.js"></script>
+<script>
+    let par = document.getElementById('parent')
+    let son = document.getElementById('son')
+    par.addEventListener('mouseenter', function () {
+        console.log('parent+enter')
+    })
+    par.addEventListener('mouseleave', function () {
+        console.log('parent +leave')
+    })
+
+    par.addEventListener('mouseout', function () {
+        console.log('parent+out')
+    })
+    par.addEventListener('mouseover', function () {
+        console.log('parent +over')
+    })
+
+
+    son.addEventListener('mouseenter', function () {
+        console.log('son+enter')
+    })
+    son.addEventListener('mouseleave', function () {
+        console.log('son+leave')
+    })
+
+    son.addEventListener('mouseout', function () {
+        console.log('son+out')
+    })
+    son.addEventListener('mouseover', function () {
+        console.log('son+over')
+    })
+    let mouseHandler = () => {
+        console.log(this)
+    }
+    //    EventUtil.addHandler(par, 'mouseenter', mouseHandler)
+    //    EventUtil.addHandler(son, 'mouseenter', mouseHandler)
+
+</script>
+</body>
+</html>

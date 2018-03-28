@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    /**  **/
+    function num(n, k) {
+        var res = [];
+        for (var i = 1; i <= n; i++) {
+            for (var j = 2; j <= n; j++) {
+                if (i % j >= k) {
+                    res.push([i, j])
+                }
+            }
+        }
+        debugger
+        return res.length
+    }
+
+
+    console.log(num(3826, 2));
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    /**  **/
+    function direction(s) {
+        var first = 'N';
+
+        var arr = s.split('')
+        var right = 0, left = 0;
+        arr.forEach(function (v, i, arr) {
+            if (v == 'R') {
+                right++;
+            } else if (v == 'L') {
+                left++
+            }
+        });
+
+        var len = right - left;
+        if (Math.abs(len) % 4 === 0) {
+            return 'N'
+        } else if (len > 0) {
+            len = len % 4;
+            if (len === 1)
+                return 'E'
+            else if (len === 2)
+                return 'S'
+            if (len === 3)
+                return 'W'
+        } else if (len < 0) {
+            len = Math.abs(len) % 4;
+            if (len === 1)
+                return 'w'
+            else if (len === 2)
+                return 'S'
+            if (len === 3)
+                return 'E'
+        }
+    }
+
+
+    console.log(direction('LRLLLLLLLLLLLLLL'));
+</script>
+</body>
+</html>

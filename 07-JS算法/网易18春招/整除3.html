@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    /**  **/
+    function mod3(l, r) {
+
+        var len = r - l + 1;
+        var str1 = '1234567890';
+        var str = '', arr = [], res = 0;
+        let g = 1;
+
+        for (var i = 1; i < l; i++) {
+            str += i;
+        }
+
+        for (var i = l; i <= r; i++) {
+            str += i;
+            arr.push(str)
+        }
+        arr.forEach(function (v, i, arr) {
+            if (Number(v) % 3 === 0) {
+                res++
+            }
+        });
+        console.log(arr);
+        return res
+    }
+
+
+    console.log(mod3(10, 15));
+</script>
+</body>
+</html>
