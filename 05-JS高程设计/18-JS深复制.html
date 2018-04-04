@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>深复制</title>
+</head>
+<body>
+<script>
+    /** 浅复制 **/
+    /*    let person1 = {
+            'name': 'Jack',
+            'age': 29
+        };
+        let person2 = person1;
+        person2.name = "Kai";
+
+        console.log(person1.name);
+        console.log(person2.name);*/
+
+/** 深复制 **/
+let person1 = {
+    'name': 'Jack',
+    'age': 29,
+    'fn':function (){
+       console.log('fn')
+    },
+    'reg':new RegExp('e')
+};
+
+let person2 = JSON.parse(JSON.stringify(person1));
+person2.name = "Kai";
+
+console.log(person1.name);
+console.log(person2.name);
+console.log(person2.fn);
+console.log(person2.reg);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .par {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            top: 30px;
+            background: #CCC;
+        }
+
+        .son {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: #777888;
+            top: 200px;
+            /*left: 100px;*/
+        }
+
+    </style>
+</head>
+<body>
+<div class="par">
+    <div class="son"></div>
+</div>
+<script>
+        var a = [];
+        for (var i = 0; i < 10; i++) {
+            a[i] = function () {
+                var c = i;
+                return function () {
+                    console.log(c)
+                }
+            }();
+        }
+        debugger
+        a[4]();
+    //
+    //    function a() {
+    //
+    //    }
+    //
+    //    function b() {
+    //
+    //    }
+    //
+    //    a.prototype = new b();
+
+    /*
+        class A {
+            constructor(name) {
+                this.name = name;
+            }
+
+            get name() {
+                return this.name;
+            }
+        }
+
+        const a = new A('x');
+        const name = a.name;*/
+
+    let arr = [7, 3, 3, 4, 4, 4];
+    let res=[...new Set(arr)];
+    console.log(res);
+
+
+</script>
+</body>
+</html>

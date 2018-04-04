@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var a = [];
+    for (var i = 0; i < 10; i++) {
+        a[i] = function () {
+            var c = i;
+            return function () {
+                console.log(c)
+            }
+        }();
+    }
+    a[4]();
+    //
+    //    function a() {
+    //
+    //    }
+    //
+    //    function b() {
+    //
+    //    }
+    //
+    //    a.prototype = new b();
+
+class A {
+    constructor(name) {
+        this.name = name;
+    }
+
+    get name() {
+        return this.name;
+    }
+}
+
+const a = new A('x');
+const name = a.name;
+
+    let arr = [7, 3, 3, 4, 4, 4];
+    let res = [...new Set(arr)];
+    console.log(res);
+</script>
+</body>
+</html>
