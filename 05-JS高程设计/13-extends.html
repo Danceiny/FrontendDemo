@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script>
+    /** 初始化一个父类 **/
+// 定义一个动物类
+    function Animal(name) {
+        // 属性
+        this.name = name || 'Animal';
+        // 实例方法
+        this.sleep = function () {
+            console.log(this.name + '正在睡觉！');
+        }
+    }
+
+    // 原型方法
+    Animal.prototype.eat = function (food) {
+        console.log(this.name + '正在吃：' + food);
+    };
+
+    /*    /!** 1、原型链继承 - 将父类的实例作为子类的原型**!/
+        function Cat() {
+        }
+
+        Cat.prototype = new Animal();
+        Cat.prototype.name = 'cat';
+
+        var cat = new Cat();
+        console.log(cat.name);              //cat
+        cat.sleep();                        //cat正在睡觉！
+        cat.eat('fish');                    //cat正在吃：fish
+        console.log(cat instanceof Animal); //true
+        console.log(cat instanceof Cat); */   //true
+
+
+    /** 2、构造函数 **/
+    function Cat(name) {
+        console.log(this);
+        Animal.call(this);
+        console.log(this);
+        this.name = name || 'Tom';
+        console.log(this)
+    }
+
+    // Test Code
+    var cat = new Cat();
+    console.log(cat.name);              //Tom
+    console.log(cat.sleep());           //Tom正在睡觉！
+    //    console.log(cat.eat('fish'));           //Tom正在睡觉！
+    console.log(cat instanceof Animal); // false
+    console.log(cat instanceof Cat);    // true
+
+
+    /* /!** 3、实例继承 **!/
+     function Cat(name) {
+         var instance = new Animal();
+         instance.name = name || 'Tom';
+         return instance;
+     }
+
+     // Test Code
+     var cat = new Cat('jack');
+     console.log(cat.name);              //jack
+     console.log(cat.sleep());           //jack正在睡觉！
+     console.log(cat.eat('fish'));       //jack正在吃：fish
+     console.log(cat instanceof Animal); // true
+     console.log(cat instanceof Cat); // false*/
+
+
+    /** 4、拷贝继承 **/
+    /*    function Cat(name) {
+            var animal = new Animal();
+            for (var p in animal) {
+                Cat.prototype[p] = animal[p];
+            }
+            Cat.prototype.name = name || 'Tom';
+        }
+
+        // Test Code
+        var cat = new Cat();
+        console.log(cat.name);              //Tom
+        console.log(cat.sleep());           //Tom正在睡觉！
+        console.log(cat.eat('fish'));       //Tom正在吃：fish
+        console.log(cat instanceof Animal); // false
+        console.log(cat instanceof Cat); // true*/
+
+    /** 5、组合继承 **/
+    /*    function Cat(name) {
+            Animal.call(this);
+            this.name = name || 'Tom';
+        }
+
+        Cat.prototype = new Animal();
+        Cat.prototype.constructor = Cat;  //要修改函数的执行
+
+        // Test Code
+        var cat = new Cat();
+        console.log(cat.name);              //Tom
+        console.log(cat.sleep());           //Tom正在睡觉！
+        console.log(cat.eat('fish'));       //Tom正在吃：fish
+        console.log(cat instanceof Animal); // true
+        console.log(cat instanceof Cat);    // true*/
+
+
+    /** 6、寄生组合继承 **/
+    /*    function Cat(name) {
+            Animal.call(this);
+            this.name = name || 'Tom';
+        }
+
+        (function () {
+            // 创建一个没有实例方法的类
+            var Super = function () {
+            };
+            Super.prototype = Animal.prototype;
+            //将实例作为子类的原型
+            Cat.prototype = new Super();
+        })();
+
+        // Test Code
+        var cat = new Cat();
+        console.log(cat.name);              //Tom
+        console.log(cat.sleep());           //Tom正在睡觉！
+        console.log(cat.eat());             //Tom正在吃：fish
+        console.log(cat instanceof Animal); // true
+        console.log(cat instanceof Cat);    //true*/
+    /**  **/
+
+</script>
+<body>
+
+</body>
+</html>
