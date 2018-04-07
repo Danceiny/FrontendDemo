@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../lib/JS/angular.min.js"></script>
+</head>
+<body ng-app="hb">
+<div ng-controller="ctrl">
+s
+    <!--{{$first}}第一个  {{$last}} {{$middle}}  {{$even}}  {{$odd}}-->
+
+    <li ng-repeat="da in datas" style="{{$middle?'color:red':''}}">
+        {{da.room}}
+    </li>
+
+    <li ng-repeat="v in item">
+        {{v}}
+    </li>
+</div>
+</body>
+<script>
+    var App = angular.module('hb', []);
+    App.controller('ctrl', function ($scope) {
+        $scope.datas = [
+            {room: 'c1-335'},
+            {room: 'c1-337'},
+            {room: 'c1-237'},
+            {room: 'c1-237'}
+        ]
+
+        $scope.item=['c1-335','c1-336','c1-337']
+
+    })
+</script>
+
+</html>

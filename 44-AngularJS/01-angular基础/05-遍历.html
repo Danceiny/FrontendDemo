@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>遍历</title>
+    <script type="text/javascript" src="../lib/JS/angular.min.js"></script>
+</head>
+<body ng-app="hb">
+<div ng-controller="ctrl"></div>
+</body>
+<script>
+    var m = angular.module('hb', []);
+    m.controller('ctrl', function ($scope) {
+        data = {name: 'xiao', url: 'wwww', img: '图片'}
+
+        //遍历对象
+        angular.forEach(data, function (v, k) {
+            v='www.'+v;
+            console.log(k, v);
+        });
+
+        var arr = [{name:'ooo',name2:'eee'},{url:'dhsk'},{kong:'jjj'}];
+
+        //遍历数组,数组里面为对象
+        angular.forEach(arr,function (v, k) {
+            v.name='www.'+v.name;
+            console.log(v,k);
+        })
+    })
+</script>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../lib/JS/angular.min.js"></script>
+</head>
+<body ng-app="hb">
+<div ng-controller="ctrl">
+    <!--关于ng-options="v.value as v.name for v in data"并不是很懂，作用是遍历整个数组-->
+    <select ng-options="v.value as v.name for v in data" ng-model="city">
+        <option value="">请选择城市</option>
+    </select>
+    {{city}}
+
+</div>
+</body>
+
+<script>
+    var m = angular.module('hb', []);
+    m.controller('ctrl', function ($scope) {
+        $scope.city = 'beijing';
+        $scope.data = [
+            {name: '北京', value: 'beijing'},
+            {name: '上海', value: 'shanghai'},
+            {name: '南京', value: 'nanjing'},
+            {name: '杭州', value: 'hangzhou'}
+        ];
+
+        //extend扩充对象
+        var obj={title:'1'};
+        angular.extend(obj,{title:'2',v:'324'});
+        console.log(obj.v);
+
+    });
+</script>
+
+</html>

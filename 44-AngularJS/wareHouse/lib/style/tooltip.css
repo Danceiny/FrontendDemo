@@ -1,0 +1,57 @@
+
+.tooltip-toggle {
+    padding: 50px;
+    cursor: pointer;
+    position: relative;
+}
+
+.tooltip-toggle svg {
+    height: 18px;
+    width: 18px;
+    padding-right: 0.5rem;
+}
+
+.tooltip-toggle::before {
+    position: absolute;
+    top: -60px;
+    left: -1px;
+    background-color: #0B8E7C;
+    /*border-radius: 5px;*/
+    color: #fff;
+    content: attr(data-tooltip1);
+    padding: 0.5rem;
+    text-transform: none;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    width: 200px;
+}
+
+.tooltip-toggle::after {
+    position: absolute;
+    top: -31px;
+    left: -1px;
+    background-color: #0B8E7C;
+    /*border-radius: 5px;*/
+    color: #fff;
+    content: attr(data-tooltip2);
+    padding: 0.5rem;
+    text-transform: none;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    width: 200px;
+}
+
+.tooltip-toggle::before, .tooltip-toggle::after {
+    color: #efefef;
+    font-family: monospace;
+    font-size: 16px;
+    opacity: 0;
+    pointer-events: none;
+    text-align: center;
+}
+
+.tooltip-toggle:hover::before, .tooltip-toggle:hover::after {
+    opacity: 1;
+    -webkit-transition: all 0.75s ease;
+    transition: all 0.75s ease;
+}

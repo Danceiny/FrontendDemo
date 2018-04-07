@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Vue 测试实例 - 菜鸟教程(runoob.com)</title>
+    <script src="//unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <li v-for="value in object">
+            {{ value }}
+        </li>
+    </ul>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            object: {
+                //名字为自定义
+                name: '菜鸟教程',
+                url: 'https://www.runoob.com',
+                slogan: '学的不仅是技术，更是梦想！',
+                txt:'你也可以用 v-for 通过一个对象的属性来迭代。'
+            }
+        }
+    })
+</script>
+</body>
+</html>

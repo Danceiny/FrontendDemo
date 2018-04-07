@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>反转字符串</title>
+    <script src="//unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <p>{{ message }}</p>
+    <button v-on:click="reverseMessage">反转字符串</button>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            message: '这是一段文字'
+        },
+        methods: {
+            reverseMessage: function () {
+                this.message = this.message.split('').reverse().join('')
+            }
+        }
+    })
+
+    /*
+     *   1：arrayObject.reverse()
+     *      注意： 该方法会改变原来的数组，而不会创建新的数组。
+     *   2：arrayObject.join()
+     *      注意：join() 方法用于把数组中的所有元素放入一个字符串。
+     *      元素是通过指定的分隔符进行分隔的。
+     *      指定分隔符方法join("#");其中#可以是任意
+     *   3：stringObject.split(a,b)这是它的语法
+     *      方法：用于把一个字符串分割成字符串数组.
+     *      a是必须的决定个从a这分割
+     *      b不是必须的，可选。该参数可指定返回的数组的最大长度 。如果设置了该参数，返回的子串不会多于这个参数指定的数组。如果没有设置该参数，整个字符串都会被分割，不考虑它的长度。
+     *      注意：返回的数组中不包括a本身；
+     *      提示和注释：
+     *      注释：如果把空字符串 ("") 用作 a，那么 stringObject 中的每个字符之间都会被分割。
+     *      注释：String.split() 执行的操作与 Array.join 执行的操作是相反的。
+     *
+     *
+     */
+
+</script>
+</body>
+</html>

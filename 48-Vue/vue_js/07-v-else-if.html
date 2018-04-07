@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-else-if</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id="app">
+    //类似于if-else语句
+    <div v-if="type==='A'">A</div>
+    <div v-else-if="type==='B'">B</div>
+    <div v-else-if="type==='C'">C</div>
+    <div v-else>Not sorry</div>
+</div>
+</body>
+<script>
+new Vue({
+    el:'#app',
+    data:{
+        type:'c'
+    }
+    })
+
+</script>
+
+</html>

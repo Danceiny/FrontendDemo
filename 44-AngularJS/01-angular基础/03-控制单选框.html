@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../lib/JS/angular.min.js"></script>
+</head>
+<body ng-app="hb">
+<div ng-controller="ctrl">
+    <input type="radio" ng-model="status" ng-value="1"  >开启
+    <input type="radio" ng-model="status" ng-value="0" >关闭
+
+    <div ng-show="status==1">这是内容</div>
+</div>
+</body>
+
+<script>
+    var m = angular.module('hb', []);
+    m.controller('ctrl', function ($scope) {
+        $scope.status=1;
+
+
+    });
+</script>
+
+</html>

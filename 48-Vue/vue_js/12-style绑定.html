@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>style绑定</title>
+    <script src="//unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <div v-bind:style="styleObject">菜鸟教程</div>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            styleObject: {
+                color: 'green',
+                fontSize: '30px'
+            }
+        }
+    })
+</script>
+</body>
+</html>

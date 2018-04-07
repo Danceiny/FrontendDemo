@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../lib/JS/angular.min.js"></script>
+</head>
+<body ng-app="hb">
+<div ng-controller="ctrl">
+    {{aname}}
+    商品名称：{{goods.data.title}}<br>
+    商品价格：{{goods.data.price}}<br>
+    商品数量：{{goods.data.num}}件<br>
+    合计：<br>
+    <button ng-click="goods.add()">增加</button>
+    <button ng-click="goods.reduce()">减少</button>
+</div>
+</body>
+
+<script>
+    var m = angular.module('hb', []);
+    m.controller('ctrl', function ($scope) {
+        $scope.aname = "第一个ng程序";
+
+        $scope.goods = {
+            data: {title: 'apple', 'price': 300, 'num': 10},
+
+            add: function () {
+                console.log('add');
+                $scope.goods.data.num++;
+            },
+            reduce: function () {
+                console.log('reduce');
+                $scope.goods.data.num--;
+            },
+        }
+
+
+    });
+</script>
+
+</html>

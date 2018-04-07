@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery</title>
+    <script src="../lib/JS/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+<ul class="data"></ul>
+</body>
+<script>
+    $.get('01.php',function (res) {
+        console.log(res);
+//        $(res).each(function (i) {
+//            html='<li>'+res[i]+'<li>';
+//            $('.data').append(html)
+//        });
+    },'json');
+</script>
+
+</html>

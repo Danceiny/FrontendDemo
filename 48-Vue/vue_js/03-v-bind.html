@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Vue 测试实例 - 菜鸟教程(runoob.com)</title>
+</head>
+<style>
+    .class1{
+        background: #444;
+        color: #eee;
+    }
+</style>
+<body>
+<script src="//unpkg.com/vue/dist/vue.js"></script>
+
+<div id="app">
+    <!--v-model为input checkbox中class1的状态值，被选中则为true，动态改变class1的值-->
+    <label for="r1">修改颜色</label><input type="checkbox" v-model="class1" id="r1">
+    <br><br>
+    <div v-bind:class="{'class1': class1}">
+        <!--简写方式：<div :class="{'class1': class1}">-->
+        directiva v-bind:class
+    </div>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data:{
+            class1: false   //class1默认为false，不加样式。
+        }
+    });
+</script>
+</body>
+</html>
