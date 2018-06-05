@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .ex1 {
+            width: 750px;
+            height: 41px;
+            background: url("tips.png");
+            overflow: hidden;
+            animation: tips 2s infinite steps(25);
+        }
+
+        @keyframes tips {
+            from {
+                background-position: 0 0px;
+            }
+            to {
+                background-position: 0 -1025px;
+            }
+        }
+
+        .btn1 {
+            width: 297px;
+            height: 297px;
+            background: url("btn.png");
+            overflow: hidden;
+            animation: btn 2s infinite steps(25);
+        }
+
+        @keyframes btn {
+            from {
+                background-position: 0 0px;
+            }
+            to {
+                background-position: 0 7425px;
+            }
+        }
+
+        .btn2 {
+            width: 600px;
+            height: 600px;
+            background: url("btn.png");
+            background-size: 100% 2500%;
+            overflow: hidden;
+            animation: btn2 1s infinite steps(25);
+        }
+
+        @keyframes btn2 {
+            from {
+                background-position: 0 0;
+            }
+            to {
+                background-position: 0 -2500%;
+            }
+        }
+
+    </style>
+</head>
+<body>
+<div class="" style="background:black">
+    <div class="ex1"></div>
+    <div class="btn1"></div>
+    <div class="btn2"></div>
+</div>
+
+
+</body>
+</html>
