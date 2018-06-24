@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .son {
+            width: 200px;
+            height: 200px;
+            background: #ccc;
+            margin: 50px;
+        }
+        .warp{
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<div class="par">
+    <div class="son son1"></div>
+    <div class="warp">
+        <div class="son">左右margin不重合，上下margin重合
+        <p>在son外层包裹一个warp，定触发生成BFC，跟上一个son1不是同一个BFC区域，所以不会发生margin垂直重合</p>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
