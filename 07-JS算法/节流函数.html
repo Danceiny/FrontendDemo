@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>节流</title>
+</head>
+<body>
+<script>
+
+    // 节流
+    function throttle(fn, wait, mustRun) {
+        let startTime = new Date();
+        let timeOut;
+        return function () {
+            let nowTime = new Date();
+            let that = this;
+            let args = arguments;
+            clearTimeout(timeOut);
+            if (nowTime - startTime >= mustRun) {
+                fn.apply(that, args);
+                startTime = nowTime;
+            } else {
+                timeOut = setTimeout(fn, wait);
+            }
+        }
+    }
+
+    // 防抖
+    function debounce(fn, wait) {
+        let timer;
+        return function () {
+            let that = this;
+            let args = arguments;
+            if (timer) {
+                clearTimeout(timer);
+                timer = null;
+            } else {
+                timer = setTimeout(function () {
+                    fn.apply(that, args)
+                }, wait)
+            }
+        }
+    }
+
+
+
+</script>
+</body>
+</html>

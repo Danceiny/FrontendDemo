@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function maxStr(str) {
+        let res = [];
+        for (let i = 0; i < str.length; i++) {
+            let len = 1, temp = 0;
+            if (str[i] === '(') {
+                temp++;
+                for (let j = i + 1; j < str.length; j++) {
+                    if (str[j] === '(' ) {
+                        temp++
+                    } else if (str[j] === ')') {
+                        temp--;
+                        len++;
+                        // res.push(len)
+                    } else if (len) {
+                        res.push(len);
+                        break;
+                    }
+                }
+            }
+
+        }
+    }
+</script>
+</body>
+</html>

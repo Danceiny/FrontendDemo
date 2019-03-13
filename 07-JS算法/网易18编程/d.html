@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    /**
+     * 一个由小写字母组成的字符串可以看成一些同一字母的最大碎片组成的。
+     * 例如,"aaabbaaac"是由下面碎片组成的:'aaa','bb','c'。牛牛现在给定一个字符串,请你帮助计算这个字符串的所有碎片的平均长度是多少。
+     *
+     * 输出一个整数,表示所有碎片的平均长度,四舍五入保留两位小数。
+
+     如样例所示: s = "aaabbaaac"
+     所有碎片的平均长度 = (3 + 2 + 3 + 1) / 4 = 2.25
+     *
+     * **/
+
+let lines= readline().split(" ");
+let a = parseInt(lines[0]);
+let b = parseInt(lines[1]);
+let c = parseInt(lines[2]);
+
+let sum1 = a+b*c;
+let sum2 = a*(b+c);
+let sum3 = a*b*c;
+let sum4 = a*b+c;
+let sum5 = a+b+c;
+let sum6 = (a+b)*c;
+let sum = [sum1,sum2,sum3,sum4,sum5,sum6];
+
+let res = Math.max.apply(sum,sum);
+print(res)
+    }
+
+    function max(sums){
+        let maxSum=0;
+        for(let i=0;i<sums.length;i++){
+            if(maxSum<sums[i]){
+                maxSum=sums[i];
+            }
+        }
+        return maxSum;
+    }
+
+    console.log(strPic('aaabbaaaccc'));
+</script>
+</body>
+</html>

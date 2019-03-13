@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    /** 题目： 在一个N*N的数组中寻找所有横，竖，左上到右下，右上到左下，四种方向的直线连续D个数字的和里面最大的值
+     *
+     * 时间限制：1秒
+     * 空间限制：32768K
+     *
+     * 输入描述:
+     * 每个测试输入包含1个测试用例，第一行包括两个整数 N 和 D :
+     * 3 <= N <= 100
+     * 1 <= D <= N
+     * 接下来有N行，每行N个数字d:
+     * 0 <= d <= 100
+     * 输入例子
+     * 4 2
+     87 98 79 61
+     10 27 95 70
+     20 64 73 29
+     71 65 15 0
+     *
+     * 思路：没想到什么好的思路，只能死个方向每个区循环，然后每个大循环里面去求d个数相加，
+     *
+     * **/
+
+    function numCount(n, d, arr) {
+
+        if (arr.length !== n) {
+            return false
+        }
+        let res = [];
+
+        // 横向
+        for (let i = 0; i < n; i++) {
+            let temp = 0;
+            for (let a = 0; a < d; a++) {
+                temp += arr[i][a]
+            }
+            res.push(temp);
+            // 初始值
+            for (let j = 0; j < n - d; j++) {
+                temp -= arr[i][j];
+                temp += arr[i][j + d];
+                res.push(temp);
+            }
+        }
+        console.log(res);
+        // 纵向
+        for (let j = 0; j < n; j++) {
+            let temp = 0;
+            for (let a = 0; a < d; a++) {
+                temp += arr[a][j]
+            }
+            res.push(temp);
+            // 初始值
+            for (let i = 0; i < n - d; i++) {
+                temp -= arr[i][j];
+                temp += arr[i + d][j];
+                res.push(temp);
+            }
+        }
+        console.log(res);
+
+
+        // 左上 - 右下
+        for (let j = 0; j <= n - d; j++) {
+            for (let i = 0; i <= n - d; i++) {
+                let temp = 0;
+                for (let a = 0; a < d; a++) {
+                    temp += arr[i + a][j + a]
+                }
+                res.push(temp);
+                temp = 0
+            }
+
+        }
+        console.log(res);
+
+
+        // 右上 - 左下
+        for (let j = 0; j <= n - d; j++) {
+            for (let i = n - 1; i >= n - d - 1; i--) {
+                let temp = 0;
+                for (let a = 0; a < d; a++) {
+                    temp += arr[i - a][j + a];
+                }
+                res.push(temp);
+                temp = 0
+            }
+
+        }
+        console.log(res);
+        console.log(Math.max.apply(res, res))
+    }
+
+
+    let arr = [[87, 98, 79, 61], [10, 27, 95, 70], [20, 64, 73, 29], [71, 65, 15, 0]];
+    numCount(4, 2, arr)
+
+
+</script>
+</body>
+</html>

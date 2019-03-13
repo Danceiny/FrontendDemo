@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    /** 假定一种编码的编码范围是a ~ y的25个字母，从1位到4位的编码，如果我们把该编码按字典序排序，形成一个数组如下：
+     * a, aa, aaa, aaaa, aaab, aaac, … …, b, ba, baa, baaa, baab, baac … …, yyyw, yyyx, yyyy
+     * 其中a的Index为0，aa的Index为1，aaa的Index为2，以此类推。 编写一个函数，输入是任意一个编码，输出这个编码对应的Index.
+     *
+     *  思路：
+     *
+     *
+     *
+     * **/
+
+
+    function code(arr) {
+        let temp1 = Math.pow(25, 3) + Math.pow(25, 2) + Math.pow(25, 1);
+        let temp2 = Math.pow(25, 2) + Math.pow(25, 1);
+        let res = 0;
+        switch (arr.length) {
+            case 1: {
+                let n1 = arr[0].codePointAt() - 97;
+                res = n1 * temp1 + n1 + n1 * 3;
+                break;
+            }
+            case 2: {
+                let n1 = arr[0].codePointAt() - 97;
+                let n2 = arr[1].codePointAt() - 96;
+                res = n1 * (temp1 + 1) + n2;
+                break;
+            }
+            case 3: {
+                let n1 = arr[0].codePointAt() - 97;
+                let n2 = arr[1].codePointAt() - 97;
+                let n3 = arr[2].codePointAt() - 96;
+                res = n1 * (temp1 + 1) + n2 * (25 + 1) + 1 + n3;
+                break;
+            }
+            case 4: {
+                let n1 = arr[0].codePointAt() - 97;
+                let n2 = arr[1].codePointAt() - 97;
+                let n3 = arr[2].codePointAt() - 97;
+                let n4 = arr[3].codePointAt() - 96;
+                res = n1 * (temp1 + 1) + n2 * (temp2 + 1) + 1 + n3 * (25 + 1) + 1 + n4;
+                break;
+            }
+        }
+        return res;
+    }
+
+
+    console.log(code('yahy'));
+</script>
+</body>
+</html>

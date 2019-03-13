@@ -27,22 +27,37 @@
     //
     //    a.prototype = new b();
 
-class A {
-    constructor(name) {
-        this.name = name;
+    class A {
+        constructor(name) {
+            this.name = name;
+        }
+
+        get html() {
+            debugger
+            return this.name;
+        }
+
+        // set name(name) {
+        //     debugger
+        //     this.name = name;
+        // }
+        set html(value) {
+            debugger
+            this.html = this.name;
+        }
     }
 
-    get name() {
-        return this.name;
-    }
-}
+    const b = new A('x');
+    const name = b.name;
+    const html = b.html;
+    console.log(name,html)
 
-const a = new A('x');
-const name = a.name;
 
     let arr = [7, 3, 3, 4, 4, 4];
     let res = [...new Set(arr)];
     console.log(res);
+
+
 </script>
 </body>
 </html>

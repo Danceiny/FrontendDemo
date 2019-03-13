@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    const ﬂattenDeep = (arr) =>
+        Array.isArray(arr) ? arr.reduce((a, b) => [...ﬂattenDeep(a), ...ﬂattenDeep(b)], []) : [arr]
+
+
+    console.log(ﬂattenDeep([1, [[2], [3, [4]], 5]]))
+
+</script>
+</body>
+</html>

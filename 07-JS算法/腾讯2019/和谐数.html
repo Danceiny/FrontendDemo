@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let n = '235';
+    let temp=0;
+    let arr= n.split('');
+    arr.map(v=>{temp+=Number(v)});
+    if(temp%Number(n)===0){
+        console.log('Yes')
+    }else{
+        console.log('No')
+    }
+</script>
+</body>
+</html>

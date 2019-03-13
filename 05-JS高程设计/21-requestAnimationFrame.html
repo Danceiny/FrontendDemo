@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>rAF</title>
+    <style>
+        #box {
+            position: relative;
+            left: 50px;
+            width: 200px;
+            height: 200px;
+            background: rebeccapurple;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+    function animation() {
+        let box = document.getElementById('box');
+        requestAnimationFrame(animation)
+
+    }
+
+    requestAnimationFrame(animation)
+</script>
+</body>
+</html>

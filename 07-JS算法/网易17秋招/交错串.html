@@ -32,17 +32,16 @@
             if (arr[i - 1] !== arr[i]) {
                 len++;
             } else {
-                if (len > 1) {
-                    res.push(len + 1);
-                } else
-                    res.push(len);
+                res.push(len + 1);
                 len = 0;
             }
         }
-        return Math.max.apply(res, res)
+        return Math.max(len+1, Math.max.apply(res, res))
+
+
     }
 
-    console.log(maxstr('111100111'));
+    console.log(maxstr('000011110000'));
 </script>
 </body>
 </html>

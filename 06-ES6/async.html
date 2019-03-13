@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>async</title>
+</head>
+<body>
+<script>
+
+  function asyncGet (x) {
+    return new Promise(resolve => setTimeout(() => {
+      console.log('a')
+      resolve(x)
+    }, 1000))
+  }
+  async function test () {
+
+    console.log('b')
+    const x = 3 + 5
+    console.log(x)
+    const a = await asyncGet(1)
+
+    console.log(a)
+    const b = await asyncGet(2)
+
+    console.log(b)
+    console.log('c')
+
+    return a + b
+  }
+  console.log('d')
+
+
+  const now = Date.now()
+  test().then(x => {
+    console.log(x)
+    console.log(`elapsed: ${Date.now() - now}`)
+  })
+  console.log('f')
+
+
+  // d , b, 8, f, a,1,  a,2 , c , 3
+</script>
+</body>
+</html>

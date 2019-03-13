@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function rote(n, i, j) {
+        let dir = Math.min(Math.min(i, j) - 1, n - Math.max(i, j))
+
+        let base = fib(n, dir);
+        let add = 0;
+        if (i >= j) {
+            add = i + j - 2 * dir - 1;
+        } else {
+            let right = (n - 2 * dir) * 2 - 1;
+            let left = 2 * n - 2 * dir - i - j ;
+            add = left + right
+        }
+        return base + add;
+    }
+
+    function fib(n, dir) {
+        let res = 0;
+        for (let i = 0; i < dir; i++) {
+            res += 4 * (n - i * 2) - 4
+        }
+        return res
+    }
+
+    console.log(rote(6, 4, 3))
+</script>
+</body>
+</html>

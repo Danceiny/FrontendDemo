@@ -1,0 +1,55 @@
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .parent {
+            height: 200px;
+            background: #ccc;
+            text-align: center;
+        }
+
+        .son {
+            display: inline-block;
+            background: #555555;
+        }
+
+        .tt {
+            display: inline-block;
+            vertical-align: middle;
+            content: '';
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="parent">
+    <div class="son">居中元素</div>
+    <div class="tt"></div>
+</div>
+
+<hr>
+<h2>垂直居中 绝对定位方式</h2>
+<div class="type2">
+    <div class="type2-son">居中元素</div>
+</div>
+<style>
+    .type2 {
+        position: relative;
+        height: 200px;
+        background: yellow;
+
+    }
+
+    .type2-son {
+        position: absolute;
+        width: 100px;
+        height: 20px;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+    }
+</style>
+</body>
+</html>

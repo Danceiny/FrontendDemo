@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div id="canvas" style="width: 200px"></div>
+<div id="canvas2" style="width: 202px;"></div>
+
+<script type="application/javascript" src="animation.js"></script>
+<script>
+    let ele1 = document.getElementById('canvas');
+    let img = [
+        './imgs/1.jpg',
+        './imgs/2.jpg',
+        './imgs/3.jpg',
+        './imgs/4.jpg',
+        './imgs/5.jpg',
+        './imgs/6.jpg',
+        './imgs/7.jpg',
+        './imgs/8.jpg',
+        './imgs/9.jpg',
+        './imgs/10.jpg',
+        './imgs/11.jpg',
+        './imgs/12.jpg',
+        './imgs/13.jpg',
+        './imgs/14.jpg',
+        './imgs/15.jpg',
+        './imgs/16.jpg',
+        './imgs/17.jpg',
+        './imgs/18.jpg',
+        './imgs/19.jpg',
+        './imgs/20.jpg',
+        './imgs/21.jpg',
+        './imgs/22.jpg',
+        './imgs/23.jpg',
+        './imgs/24.jpg',
+        './imgs/25.jpg',
+        './imgs/26.jpg',
+        './imgs/27.jpg',
+        './imgs/28.jpg',
+        './imgs/29.jpg',
+        './imgs/30.jpg',
+        './imgs/31.jpg',
+        './imgs/32.jpg',
+    ];
+    let canvasKeyFrames = new CanvasKeyFrames(ele1, 'array', img, {
+        width: 750,
+        height: 1244,
+        fps: 60,
+        ratio: 1
+    });
+    // canvasKeyFrames.play();
+
+
+    let ele2 = document.getElementById('canvas2');
+    let img2 = ['1.png'];
+    let canvas2 = new CanvasKeyFrames(ele2, 'sprite', img2, {
+        width: 202,
+        height: 158,
+        ratio: 1,
+        fps: 10
+    })
+    // canvas2.play()
+
+
+    // (function () {
+    //     let img = new Image();
+    //     img.onload = function () {
+    //         img.onload = null;
+    //         sss(img);
+    //     };
+    //     img.onerror = function () {
+    //     };
+    //     img.src = '11.png';
+    // })();
+
+
+</script>
+</body>
+</html>

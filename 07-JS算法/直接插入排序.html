@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /** 4、直接插入排序 **/
+    function sort(array) {
+        for (let i = 1, len = array.length; i < len; i++) { //直接从第二个开始比较
+            let current = array[i];  //将这次要比较的值存储起来，作为这一轮循环里面的常量
+            let index = i;
+
+            //从index前一位数开始比较比较，如果当前比较的数小于它的前一位，则将大的数后移一位
+            while (index > 0 && current < array[index - 1]  ) {
+                array[index] = array[index - 1];
+                index--;  //于此同时，下标也前移一位，继续下一次比较
+            }
+            if (index !== i) {  //防止自己赋值给自己，
+                array[index] = current //如果不是自己，则一定是之前后移空出来留给current的位置，插入进去
+            }
+        }
+        return array;
+    }
+
+    console.log(sort([3,2, 4, 21, 6, 13, 6, 234, 9]));
+</script>
+</body>
+</html>

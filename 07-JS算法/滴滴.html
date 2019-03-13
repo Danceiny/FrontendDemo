@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function parseQueryString(url, key) {
+        // let reg = new RegExp(key + '=(.+)&?.+') ;
+        let reg = new RegExp('[?|&]' + key + "=([^&]*)(&|$)");
+        let res = url.match(reg);
+        return res[1]
+    }
+
+    parseQueryString('https://www.didichuxing.com/path?key2=123&fir=666666&key1=a', 'key1')
+</script>
+</body>
+</html>

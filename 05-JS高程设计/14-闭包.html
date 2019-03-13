@@ -6,7 +6,7 @@
 </head>
 <script>
 
-    function creatFunction() {
+/*    function creatFunction() {
         var result = new Array();
 //        console.log(222, this)
 //        result = function () {
@@ -34,8 +34,17 @@
         result[i] = function () {
             return i;
         }
+    }*/
+
+
+    for (var i = 0; i < 5; i++) {
+        ((j) => {
+            setTimeout(() => {
+                console.log(j);
+            }, 1000 * j)
+        })(i)
     }
-    console.log(result[8]());
+    // console.log(result[8]());
 
 </script>
 <body>

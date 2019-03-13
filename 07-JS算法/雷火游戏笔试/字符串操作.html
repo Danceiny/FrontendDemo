@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    /** 题目： 给定一个字符串，请你将字符串重新编码，将连续的字符替换成“连续出现的个数+字符”。比如字符串AAAABCCDAA会被编码成4A1B2C1D2A。
+     *
+     * 时间限制：1秒
+     * 空间限制：32768K
+     *
+     * 输入描述:
+     * 每个测试输入包含1个测试用例
+     * 每个测试用例输入只有一行字符串，字符串只包括大写英文字母，长度不超过10000。
+     *
+     * 思路：现将字符串转为数组再遍历
+     *
+     * 验证是否可以通过for in/of 遍历字符串
+     *
+     * **/
+
+    function string(str) {
+        if (str.length <= 0) {
+            return false
+        }
+        let tempNum = 1;
+        let temp = '';
+        let resArr = [];
+        for (let i = 1; i <= str.length; i++) {
+            if (str[i - 1] == str[i]) {
+                temp = str[i - 1];
+                tempNum++
+            } else {
+                resArr.push(tempNum + str[i - 1]);
+                tempNum = 1;
+                console.log(resArr)
+            }
+        }
+
+        return resArr.join('');
+    }
+
+    console.log(string('AAAABCCDAA'));
+
+</script>
+</body>
+</html>

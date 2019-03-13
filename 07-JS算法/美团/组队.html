@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var n, m;
+    var solveMeFirst = (n, m) => {
+        var team = Math.floor((n + m) / 3);
+        if (team < m && team < n) {
+            return team
+        } else {
+            return n < m ? n : m
+        }
+    };
+    while ((n = rendInt()) != null && (m = rendInt()) != null) {
+        var result = solveMeFirst(n, m);
+        print(result);
+    }
+
+
+    var cmd = require('node-stdio')
+    var a, b;
+    var solveMeFirst = (n, m) => {
+        var team = Math.floor((n + m) / 3);
+        if (team < m && team < n) {
+            return team
+        } else {
+            return n < m ? n : m
+        }
+    };
+    while((a=cmd.readInt())!=null && (b=cmd.readInt())!=null){
+        let c = solveMeFirst(a, b);
+        cmd.print(c);
+    }
+</script>
+</body>
+</html>

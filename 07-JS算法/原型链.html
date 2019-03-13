@@ -1,39 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <meta charset="UTF-8">
+  <title>Title</title>
 </head>
 <body>
 <script>
 
-function optionalChaining(obj, chain) {
+  function optionalChaining (obj, chain) {
     // your code here
 
     let key = chain.split('.');
     let len = key.length, res;
     key.map(
-        function (value, index) {
-            obj = obj[value];
-            if (obj) {
-                if (index + 1 === len) {
-                    console.log(obj)
-                }
-            } else {
-                console.log(obj);
-            }
-        }, obj)
-
-}
-
-    let user = {
-        address: {
-            street: "No.969 West WenYi Road"
+      function (value, index) {
+        obj = obj[value];
+        if (obj) {
+          if (index + 1 === len) {
+            console.log(obj)
+          }
+        } else {
+          console.log(obj);
         }
-    }
-    optionalChaining(user, 'address.street'); // No.969 West WenYi Road
+      }, obj)
 
-    optionalChaining(user, 'age');  // undefined
+  }
+
+  let user = {
+    address: {
+      street: "No.969 West WenYi Road"
+    }
+  }
+  optionalChaining(user, 'address.street'); // No.969 West WenYi Road
+
+  optionalChaining(user, 'age');  // undefined
 </script>
 
 </body>

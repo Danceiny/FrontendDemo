@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    .main {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      background: #ccc;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+<div class="main"></div>
+<div class="main"></div>
+<div class="main"></div>
+<div class="main"></div>
+<script>
+
+  let ele = document.querySelectorAll('.main');
+  console.log(ele);
+
+  /** 使用top属性改变位置，测试回流  **/
+  setTimeout(function () {
+    for(let item of ele){
+      item.style.marginTop= '100px';
+      item.style.background='red';
+      item.style.display='block'
+    }
+  },3000);
+
+  /** 使用transform属性改变位置，测试回流  **/
+  // setTimeout(function () {
+  //   for(let item of ele){
+  //     item.style.transform= 'translateY(100px)';}
+  // },3000)
+
+  
+</script>
+
+</body>
+</html>

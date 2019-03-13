@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let arr1 = [22, {
+        name: 'xia',
+        age: 22
+    }, 34, 54];
+    let arr2 = deepClone(arr1);
+    arr2[0] = '1';
+    arr2[1].name = 'yang';
+    console.log(arr1, arr2)
+
+    function deepClone(source) {
+        return JSON.parse(JSON.stringify(source));
+    }
+</script>
+</html>

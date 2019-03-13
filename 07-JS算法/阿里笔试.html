@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+function normalize(str) {
+    let start = str.indexOf('[');
+    let end = str.indexOf('[', start + 1);
+    if (str.slice(start + 1, str.length - 1).includes(']')) {
+        return `{value:'${str.slice(start + 1, end)}',children:${normalize(str.slice(start + 1, str.length - 1))}}`;
+    } else {
+        return `{value:'${str.slice(start + 1, end)}'}`;
+    }
+}
+
+    console.log(normalize('[abc[bcd[def]]]'))
+</script>
+</body>
+</html>

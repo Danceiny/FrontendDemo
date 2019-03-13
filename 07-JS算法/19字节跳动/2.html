@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+
+
+
+function a(arr){
+    if (arr == null || arr[0] == null) {
+        return 0;
+    }
+    let X = arr.length;
+    let Y = arr[0].length;
+    let res = 0;
+    for (let i = 0; i < X; i++) {
+        for (let j = 0; j < Y; j++) {
+            if (arr[i][j] == 1) {
+                res++;
+                b(arr, i, j, X, Y);
+            }
+        }
+    }
+
+
+    return res;
+}
+function b(arr, i, j, X, Y) {
+    if (i < 0 || i >= X || j < 0 || j >= Y || arr[i][j] != 1) {
+        return ;
+    }
+    arr[i][j] = 2;
+    b(arr, i + 1, j, X, Y);
+    b(arr, i - 1, j, X, Y);
+    b(arr, i, j + 1, X, Y);
+    b(arr, i, j - 1, X, Y);
+}
+
+console.log(a([[1,0,0,0],[0,0,0,0],[0,0,0,1],[0,0,0,0]]))
+
+</script>
+</body>
+</html>

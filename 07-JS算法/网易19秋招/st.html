@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+    function len(str) {
+        let obj = {};
+        for (let i = 0; i < str.length ; i++) {
+            if (obj[str[i]]) {
+                obj[str[i]]++
+            } else {
+                obj[str[i]] = 1
+            }
+        }
+
+        let max = Math.max(obj['w'], obj['b']);
+        let min = Math.min(obj['w'], obj['b']);
+        if ((max - min) <= 1) {
+            return min + max
+        } else {
+            return min * 2 + 1
+        }
+
+    }
+
+    console.log(len('bwbwb'));
+
+
+   var obj={
+       a:12,
+       b:34,
+       c:56
+   }
+
+   console.log(Object.values(obj)[1])
+
+</script>
+</body>
+</html>

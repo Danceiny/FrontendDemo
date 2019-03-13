@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    /** 考拉有n个字符串字符串，任意两个字符串长度都是不同的。考拉最近学习到有两种字符串的排序方法： 1.根据字符串的字典序排序。例如：
+     "car" < "carriage" < "cats" < "doggies < "koala"
+     2.根据字符串的长度排序。例如：
+     "car" < "cats" < "koala" < "doggies" < "carriage"
+     考拉想知道自己的这些字符串排列顺序是否满足这两种排序方法，考拉要忙着吃树叶，所以需要你来帮忙验证。
+     *
+     * 思路：分别判断，先判断长度，
+     *
+     *
+     *
+     * **/
+
+
+    function strSort(arr) {
+        if (arr.length <= 0) {
+            return false
+        }
+        let flag1 = true, flag2 = true;
+        for (let i = 0; i < arr.length; i++) {
+            if (flag1) {
+                if (i !== arr.length - 1 && arr[i].length >= arr[i + 1].length) {
+                    flag1 = false;
+                }
+            }
+            if (flag2) {
+                for (let j = i + 1; j < arr.length; j++) {
+                    if (flag2) {
+
+                        // 将第一个字符串于的每一位与后面的字符串进行对比，一旦遇到大于的就返回，有一种情况要考虑到，
+                        // 如果相同位置的后面的比较大，则这个一定满足，直接跳出，
+                        // 如果 前一个字符串的长度很明显比后一个长，并且都相等的情况下，应该返回false，所以一开始判断后一个字符串是否有值，没有 值了则返回false
+                        for (let k = 0; k < arr[1].length; k++) {
+                            if (arr[j][k]) {
+                                if (arr[i][k] < arr[j][k]) {
+                                    break;
+                                } else if (arr[i][k] > arr[j][k]) {
+                                    flag2 = false;
+                                    break;
+                                }
+                            } else {
+                                flag2 = false;
+                                break;
+                            }
+                        }
+                    } else {
+                        break;
+                    }
+
+                }
+            }
+        }
+        if (flag1 && flag2) {
+            return 'both'
+        } else if (!(flag1 || flag2)) {
+            return 'none'
+        } else if (flag1 && !flag2) {
+            return 'lengths'
+        } else if (!flag1 && flag2) {
+            return 'lexicographically'
+        } else {
+            return 'none'
+        }
+
+    }
+
+    console.log(strSort(['a', 'aa', 'bbb']))
+</script>
+</body>
+</html>

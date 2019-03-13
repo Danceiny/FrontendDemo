@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <title>冒泡</title>
+        </head>
+<body>
+<script type="text/javascript">
+    let arr = [12, 34, 43, 2, 3, 0, 32, 76, 85, 235, 97, 34, 755, 23, 8, 43, 86, 34, 97, 464, 45, 67];
+
+    //交换位置
+    function exchange(a, b, obj) {
+        let temp = obj[a];
+        obj[a] = obj[b];
+        obj[b] = temp;
+//        return obj
+    }
+
+    /** 1、冒泡排序 **/
+    /*function sort(array) {
+        let count=0;
+        for (let i = 0, len = array.length; i < len; i++) {
+            for (let j = 0; j < len; j++) {
+                if (array[i] < array[j]) {
+                    count++
+                    exchange(i, j, array)
+                }
+            }
+        }
+        //count=81
+        return array;
+    }*/
+    /** 2、双向冒泡排序 **/
+    /*function sort(array) {
+        for (let i = 0, len = array.length; i < len; i++) {
+            for (let j = 0; j < len; j++) {
+                if (array[i] < array[j]) {
+                    exchange(i, j, array)
+                }
+            }
+            for (let k = len - 1; k >= 0; k--) {
+                if (array[i] < array[k]){
+                    exchange(i, k, array)
+                }
+            }
+        }
+//  count=81
+        return array;
+    }*/
+    /** 3、选择排序 **/
+    /*function sort(array) {
+        let res = [], min;
+        for (let i = 0, len = array.length; i < len - 1; i++) { //由于第一个开始跟后面对比，因此只需要对比n-1
+            min = i;
+            for (let j = i + 1; j < len; j++) {
+                if (array[min] > array[j]) {
+                    min = j  //每一轮循环记下此轮最小值的下标，在后面将此下标值放到数列前面
+                }
+            }
+            exchange(min, i, array)
+        }
+        return array;
+    }*/
+    /** 4、直接插入排序 **/
+    /* function sort(array) {
+         for (let i = 1, len = array.length; i < len; i++) { //直接从第二个开始比较
+             let current = array[i];  //将这次要比较的值存储起来，作为这一轮循环里面的常量
+             let index = i;
+             //从index前一位数开始比较比较，如果当前比较的数小于它的前一位，则将大的数后移一位
+             while (current < array[index - 1] && index >= 0) {
+                 array[index] = array[index - 1];
+                 index--;  //于此同时，下标也前移一位，继续下一次比较
+             }
+             if (index !== i) {  //防止自己赋值给自己，
+                 array[index] = current //如果不是自己，则一定是之前后移空出来留给current的位置，插入进去
+             }
+         }
+         return array;
+     }*/
+    /** 5、折半插入排序 **/
+    /*  function sort(array) {
+          for (let i = 1, len = array.length; i < len; i++) { //直接从第二个开始比较 i=1
+              let low = 0, high = i - 1, current = array[i];
+              //找中值对应的下标
+              while (low <= high) {
+  //                let m = Math.floor((low+high) / 2);
+                  let m = (low + high) >> 1;   //x>>1 是位运算中的右移运算, 表示右移一位, 等同于x除以2再取整, 即 x>>1 == Math.floor(x/2) .
+                  if (array[i] <= array[m]) {
+                      high = m - 1   //保证low<=high顺利成立，将high定位低半区
+                  } else {
+                      low = m + 1     //同理
+                  }
+              }
+              //将在要插入值位置之后的所有元素后移，留出插入的位置
+              for (let j = i; j > low; j--) {
+                  array[j] = array[j - 1];
+                  console.log(array)
+              }
+              array[low] = current  //插入
+          }
+          return array;
+      }*/
+    /** 6、希尔排序 **/
+    //封装直接插入排序
+function dirSort(array, grap) {
+    grap = arguments[1] ? grap : 1;  //如果grap传值了，则为grap传入的值，如果没有，则从1开始
+    //        debugger;
+    for (let i = grap - 1; i < array.length; i++) {　// 从步进值位置开始
+        let current = array[i];
+        let index = i - grap;  // 待比较元素下标
+        while (index >= 0 && current < array[index]) { // 当前元素比待比较元素还小
+            array[index + grap] = array[index];         // 将待比较元素后移grap位置
+            index -= grap;
+        }
+        if (index + grap !== i) {
+            array[index + grap] = current;      // 此时index+grap表示待比较元素位置，因为之前已经-grap了，将当前值当如待比较元素位置
+        }
+    }
+    return array;
+}
+
+function sort(array) {
+    let gra = array.length >> 1;
+    while (gra > 0) {
+        dirSort(array, gra);
+        gra = gra >> 1;
+    }
+    return array
+}
+
+    /** 7、快速排序 **/
+    /* function sort(array) {
+         if (array.length >= 1) {
+             //选取基准点，基准点选取的好坏决定了排序速度的好坏，目前没有好的方法，一般居中选取
+             let baseIndex = array.length >> 1;
+             let left = [], right = [];  //定义基准点左右两边数组，小的都在左边，大的都在右边
+             // 循环判断
+             for (let i = 0; i < array.length; i++) {
+                 if (i !== baseIndex) {       //这一步很关键，一定不能把自身算进去
+                     if (array[i] < array[baseIndex]) {
+                         left.push(array[i])
+                     } else
+                         right.push(array[i])
+                 }
+             }
+ //          最关键的一步：递归调用然后在用数组拼接
+             return arguments.callee(left).concat(array[baseIndex], arguments.callee(right))
+         }
+         else
+             return array;
+     }*/
+    /** 8、归并排序 **/
+    /* function sort(array) {
+         if (array.length < 2)
+             return array;
+         else {
+             let res = [];
+             //上半部分拆分数组，
+             let baseIndex = array.length >> 1;
+             let left = array.slice(0, baseIndex),
+                 right = array.slice(baseIndex);
+
+             //合并数组，
+             function merge(left, right) {
+                 while (left.length && right.length) {
+                     let item = left[0] <= right[0] ? left.shift() : right.shift();
+                     res.push(item);
+                 }
+                 return res.concat(left.length ? left : right);  //返回排好数组
+             }
+
+             //递归调用，一边拆分，一边合并
+             return merge(arguments.callee(left), arguments.callee(right));
+         }
+     }*/
+
+    console.log(sort(arr));
+</script>
+</body>
+</html>

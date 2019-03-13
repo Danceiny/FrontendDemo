@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    /** 如果一个数字序列逆置之后跟原序列是一样的就称这样的数字序列为回文序列。例如：
+     {1, 2, 1}, {15, 78, 78, 15} , {112} 是回文序列,
+     {1, 2, 2}, {15, 78, 87, 51} ,{112, 2, 11} 不是回文序列。
+     现在给出一个数字序列，允许使用一种转换操作：
+     选择任意两个相邻的数，然后从序列移除这两个数，并用这两个数字的和插入到这两个数之前的位置(只插入一个和)。
+     现在对于所给序列要求出最少需要多少次操作可以将其变成回文序列。
+     *
+     *  思路：判断首尾， 如果相等 则移除掉，如果不相等，则让最小的数加上相邻的数，然后再执行判断，一直到数组长度小于2
+     *
+     *
+     * **/
+
+
+    function numReturn(n, arr) {
+        if (arr.length <= 0) {
+            return false
+        }
+        if (n < arr.length) {
+            return false
+        }
+        let count = 0;
+
+        /* function repeat(arr) {
+             if (arr.length > 1) {
+                 let start = arr[0], end = arr[arr.length - 1];
+                 if (start === end) {
+                     arr.pop();
+                     arr.shift();
+                     return repeat(arr);
+                 } else {
+                     if (start < end) {
+                         let temp = arr[0] + arr[1];
+                         arr.splice(0, 2);
+                         arr.unshift(temp);
+                     } else {
+                         let temp = arr[arr.length - 1] + arr[arr.length - 2];
+                         arr.splice(arr.length - 2, 2);
+                         arr.push(temp);
+                     }
+                     count++;
+                     return repeat(arr);
+                 }
+             } else {
+
+                 return count
+             }
+         }*/
+
+        while (arr.length > 1) {
+            let start = arr[0], end = arr[arr.length - 1];
+            if (start === end) {
+                arr.pop();
+                arr.shift();
+                // return repeat(arr);
+            } else {
+                if (start < end) {
+                    let temp = arr[0] + arr[1];
+                    arr.splice(0, 2);
+                    arr.unshift(temp);
+                } else {
+                    let temp = arr[arr.length - 1] + arr[arr.length - 2];
+                    arr.splice(arr.length - 2, 2);
+                    arr.push(temp);
+                }
+                count++;
+                // return repeat(arr);
+            }
+        }
+
+        return count
+    }
+
+
+    console.log(numReturn(4, [1, 1, 1, 3]))
+</script>
+</body>
+</html>

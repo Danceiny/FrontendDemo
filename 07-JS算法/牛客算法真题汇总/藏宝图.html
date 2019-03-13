@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    /** 题目：牛牛拿到了一个藏宝图，顺着藏宝图的指示，牛牛发现了一个藏宝盒，藏宝盒上有一个机关，机关每次会显示两个字符串 s 和 t，
+     * 根据古老的传说，牛牛需要每次都回答 t 是否是 s 的子序列。注意，子序列不要求在原字符串中是连续的，
+     * 例如串 abc，它的子序列就有 {空串, a, b, c, ab, ac, bc, abc} 8 种。
+     *
+     * 思路：将s串解析为对象存储，将t串同样解析为对象，使用对象的Key进行匹配，
+     *
+     * **/
+
+
+    function st(s, t) {
+        if (s.length < t.length) {
+            return 'No'
+        }
+
+        let sObj = {}, tObj = {};
+
+        for (let key in s) {
+            if (!sObj[s[key]]) {
+                sObj[s[key]] = 1
+            } else {
+                sObj[s[key]]++
+            }
+        }
+        for (let key in t) {
+            if (!tObj[t[key]]) {
+                tObj[t[key]] = 1
+            } else {
+                tObj[t[key]]++
+            }
+        }
+        let a = 0;
+        let b = 0;
+        for (let key in tObj) {
+            if (sObj[key] && sObj[key] >= tObj[key]) {
+                a++;
+            }
+            b++
+        }
+        return a == b ? 'Yes' : 'No'
+    }
+
+    console.log(st('oxoxoxox', 'ooxxoo'))
+</script>
+</body>
+</html>

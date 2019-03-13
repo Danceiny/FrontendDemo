@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    /**  **/
+function direction(s) {
+    let len = s.length;
+    let arr = s.split('');
+    let l = 0, r = 0;
+    for (let i = 0; i < len; i++) {
+        if (arr[i] === 'L') {
+            l++;
+        } else if (arr[i] === 'R') {
+            r++;
+        }
+
+    }
+    let res = '';
+    let a = Math.abs(l - r) % 4;
+    switch (a) {
+        case 0: {
+            res = 'N';
+            break;
+        }
+        case 2: {
+            res = 'S';
+            break;
+        }
+        case 1: {
+            if (l < r) {
+                res = 'E'
+            }
+            if (l > r) {
+                res = 'W'
+            }
+            break;
+        }
+        case 3: {
+            if (l < r) {
+                res = 'W'
+            }
+            if (l > r) {
+                res = 'E'
+            }
+            break;
+        }
+    }
+
+    return res;
+}
+
+
+    console.log(direction('LRR'));
+</script>
+</body>
+</html>

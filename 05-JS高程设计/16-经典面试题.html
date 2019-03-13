@@ -1,37 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <meta charset="UTF-8">
+  <title>Title</title>
 </head>
 <body>
 
 <script>
-    function Foo() {
-        getName = function () { console.log(1); };
-        return this;
-    }
-    Foo.getName = function () { console.log(2);};
-    Foo.prototype.getName = function () { console.log(3);};
-    var getName = function () { console.log(4);};
-    function getName() { console.log(5);}
+  function Foo () {
+    getName = function () {
+      console.log(1);
+    };
+    return this;
+  }
 
-    //答案：
-    Foo.getName();//2
-    getName();//4
-    window.getName(); //4
-    Foo().getName();//1   执行了Foo()函数之后， window.getName()已经被修改为Foo()函数里面的全局getName
-    getName();//1    调用就变成了window.getName()
-    new Foo.getName();//2
-    new Foo().getName();//3
-    new new Foo().getName();//3
+  Foo.getName = function () {
+    console.log(2);
+  };
+  Foo.prototype.getName = function () {
+    console.log(3);
+  };
+  var getName = function () {
+    console.log(4);
+  };
+
+  function getName () {
+    console.log(5);
+  }
+
+  //答案：
+  Foo.getName();//2
+  getName();//4
+  window.getName(); //4
+  Foo().getName();//1   执行了Foo()函数之后， window.getName()已经被修改为Foo()函数里面的全局getName
+  getName();//1    调用就变成了window.getName()
+  new Foo.getName();//2
+  new Foo().getName();//3
+  new new Foo().getName();//3
 
 
-    var a={};
-    a.name='xiaao';
-    var b=a;
-    b.name="wang";
-    console.log("a:",a,"b:",b);
+  var a = {};
+  a.name = 'xiaao';
+  var b = a;
+  b.name = "wang";
+  console.log("a:", a, "b:", b);
 </script>
 </body>
 </html>

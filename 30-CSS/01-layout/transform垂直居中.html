@@ -1,0 +1,123 @@
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div>
+  <h1>vertical-align + inline-block 垂直居中</h1>
+  <div class="parent-type1-1">
+    <span class="son-type1-1">居中元素</span>
+    <span class="son-type1-1">居中元素2</span>
+    <!--<div class="tt"></div>-->
+  </div>
+
+  <style type="text/css">
+    .parent-type1-1 {
+      height: 200px;
+      width: 100%;
+      background: #ccc;
+      text-align: center;
+      border: 1px solid #000;
+    }
+
+    .son-type1-1 {
+      display: inline;
+      vertical-align: middle;
+      background: #555555;
+      height: 40px;
+    }
+
+    .parent-type1-1:after {
+      display: inline-block;
+      vertical-align: middle;
+      content: '';
+      height: 100%;
+    }
+  </style>
+</div>
+<!----------------------------------------------------------------------------------->
+<hr>
+<div>
+  <h2>vertical-align + table-cell 垂直居中</h2>
+  <div class="parent-type1-2">
+    <div class="son-type1-2">居中元素1</div>
+    <div class="son-type1-2">居中元素2</div>
+  </div>
+  <style>
+    .parent-type1-2 {
+      position: relative;
+      height: 200px;
+      background: yellow;
+      vertical-align: middle;
+      display: table-cell;
+    }
+
+    .son-type1-2 {
+      display: table-cell;
+      /*vertical-align: middle;*/
+      text-align: center;
+      width: 100px;
+      height: 20px;
+      background: #ccc;
+    }
+  </style>
+</div>
+<!----------------------------------------------------------------------------------->
+<div>
+  <hr>
+  <h2>垂直居中 绝对定位方式 top bottom left right =0 margin:auto</h2>
+  <div class="type2">
+    <div class="type2-son">居中元素1</div>
+    <div class="type2-son">居中元素2</div>
+  </div>
+  <style>
+    .type2 {
+      position: relative;
+      height: 200px;
+      background: yellow;
+    }
+
+    .type2-son {
+      position: absolute;
+      text-align: center;
+      width: 100px;
+      height: 20px;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+      background: #ccc;
+    }
+  </style>
+</div>
+<!----------------------------------------------------------------------------------->
+<div>
+  <hr>
+  <h2>垂直居中 transform方式</h2>
+  <div class="parent3">
+    <div class="son3">居中元素1</div>
+    <div class="son3">居中元素2</div>
+  </div>
+  <style>
+    .parent3 {
+      height: 200px;
+      width: 100%;
+      background: #ccc;
+      text-align: center;
+      position: relative;
+      border: 1px solid #000;
+    }
+
+    .son3 {
+      display: inline-block;
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #999;
+      height: 40px;
+    }
+  </style>
+</div>
+</body>
+</html>

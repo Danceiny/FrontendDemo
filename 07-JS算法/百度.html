@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function maxDay(n, m, arr) {
+        if (n > m) {
+            return 0
+        }
+
+        let arrObj = {};
+        for (let i = 0; i < arr.length; i++) {
+            if (!arrObj[arr[i]]) {
+                arrObj[arr[i]] = 1
+            } else {
+                arrObj[arr[i]]++
+            }
+        }
+
+        // 计算
+        let res = 0;
+        let newArr = Object.values(arrObj).sort();
+        let len = newArr.length;
+        let min = newArr[0], max = newArr[newArr.length - 1];
+        if (n > len) {
+            res = Math.max(min, max >> 1)
+        } else {
+
+            for (let i = 0; i < newArr.length; i++) {
+                if (min > len) {
+                    res = min
+                } else {
+                    res = Math.max(min, max >> 1)
+                }
+            }
+            res = len > newArr[0] ? len : newArr[0]
+        }
+        return res
+
+    }
+
+
+
+</script>
+</body>
+</html>

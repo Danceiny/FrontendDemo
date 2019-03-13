@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .text {
+            height: 300px;
+            background: red;
+            vertical-align: 20%;
+            display: table-cell;
+        }
+
+    </style>
+
+    <style type="text/css">
+        .parent {
+            height: 300px;
+            background: yellow;
+            text-align: center;
+        }
+
+        .son {
+            /*width: 100%;*/
+            display: inline-block;
+            background: #555555;
+
+        }
+
+        .parent:after {
+            display: inline-block;
+            vertical-align: 20%;
+            content: '';
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<div class="text">
+    自我介绍，问项目
+    面试官在mbp上出了几道题:
+    列举块级元素和行内元素
+    块级元素中有不定行的文字，怎么让它垂直居中
+    选择器优先级
+    有哪些盒子模型
+    css可继承的属性
+    然后问了选择器是从右到左解析还是从左到右，为什么
+    深拷贝
+    换肤功能应该怎么实现
+    像淘宝那种很多图片的网站应该怎么优化
+    前端的一些优化
+</div>
+
+
+<div class="parent">
+    <div class="son">居中元素</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    let f1 = new Promise(function (resolve, reject) {
+        console.log(1);
+        setTimeout(function () {
+            resolve(3);
+            console.log(2)
+        }, 0)
+    })
+    f1.then(res => console.log(res))
+    console.log(4)
+</script>
+</body>
+</html>

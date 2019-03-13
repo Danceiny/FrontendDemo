@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    /** 题目：有 n 个学生站成一排，每个学生有一个能力值，牛牛想从这 n 个学生中按照顺序选取 k 名学生，
+     * 要求相邻两个学生的位置编号的差不超过 d，使得这 k 个学生的能力值的乘积最大，你能返回最大的乘积吗？
+     *
+     * 思路：
+     *
+     * **/
+
+
+    function maxPow(n, k, d, arr) {
+        if (arr.length <= 0) {
+            return false
+        }
+        if (n < k) {
+            return false
+        }
+
+        let temp = 1;
+        let res = [];
+        for (let i = 0; i < k; i++) {
+            temp *= arr[i];
+        }
+        res.push(temp);
+        for (let i = 0; i < n - k; i++) {
+            temp = temp * arr[i + k] / arr[i];
+            res.push(temp);
+        }
+        console.log(res)
+        return Math.max.apply(res, res)
+    }
+
+    console.log(maxPow(3, 2, 50, [7, 4, 7]))
+</script>
+</body>
+</html>

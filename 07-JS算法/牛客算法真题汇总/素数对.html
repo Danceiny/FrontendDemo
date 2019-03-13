@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    /** 给定一个正整数，编写程序计算有多少对质数的和等于输入的这个正整数，并输出结果。输入值小于1000。
+     如，输入为10, 程序应该输出结果为2。（共有两对质数的和为10,分别为(5,5),(3,7)）
+     * **/
+
+    /* 求所有素数*/
+    function prime(num) {
+        //定义基数数组baseArr，用来存放较小的质数，res存放筛选结果，base存放[2,3]
+        let baseArr = [], res = [], base = [];
+        num = ~~num;  //取整
+        //对2,3 特殊对待
+        if (num < 4) {
+            if (num === 1)
+                alert('请输入大于1的整数')
+            if (num === 2)
+                base.push(2);
+            else
+                base.push(2, 3)
+        }
+        //筛选剩下的
+        else {
+            baseArr.push(2, 3);
+            base.push(2, 3);
+            for (let i = 2; i <= num; i++) {  //将2,3的倍数剔除，其余的放入res进行下一轮筛选
+                if (i % 2 !== 0 && i % 3 !== 0) {
+                    res.push(i);
+                }
+            }
+            for (let j = 0; j <= baseArr.length - 1; j++) {  //以大于3最小的质数开始筛选，
+                for (let i = 1; i < res.length; i++) {
+                    if (res[i] % res[j] === 0 && i !== j) {  //除自身外，其他的是质数的倍数的数被剔除
+                        res.splice(i, 1);
+                    }
+                }
+                if (res[j] < Math.sqrt(num)) {  //确保基数质数肯定小于sqrt(num)
+                    baseArr.push(res[j]);   //添加一个新的基数质数。
+                }
+            }
+        }
+        return base.concat(res)  //将特殊的[2,3]加入返回。
+    }
+
+    console.log(prime(100));
+
+
+    function primeArr(n) {
+        let arr = prime(n);
+        let a = 0, b = arr.length - 1;
+        let res = [];
+        while (a <= b) {
+            if (arr[a] + arr[b] === n) {
+                res.push([arr[a], arr[b]]);
+                a++
+            } else if (arr[a] + arr[b] < n) {
+                a++
+            } else if (arr[a] + arr[b] > n) {
+                b--
+            }
+        }
+        console.log(res);
+        return res.length
+
+    }
+
+    console.log(primeArr(10));
+    // [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]
+    // baseArr = [2,3,,5,7]
+
+</script>
+</body>
+</html>

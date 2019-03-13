@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .f1, .f2, .f3, .f4 {
+            border: 1px solid #000;
+            padding: 20px;
+            display: inline-block;
+        }
+
+        .f4 {
+            width: 50px;
+            height: 50px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="f1">
+    <div class="f2">
+        <div class="f3">
+            <div class="f4"></div>
+            <div class="f4"></div>
+            <div class="f4"></div>
+            <div class="f4"></div>
+        </div>
+        <div class="f3">
+            <div class="f4"></div>
+            <div class="f4"></div>
+            <div class="f4"></div>
+            <div class="f4"></div>
+        </div>
+
+    </div>
+    <div class="f2">
+        <div class="f3">
+            <div class="f4"></div>
+            <div class="f4"></div>
+            <div class="f4"></div>
+            <div class="f4"></div>
+        </div>
+        <div class="f3">
+            <div class="f4"></div>
+            <div class="f4"></div>
+            <div class="f4"></div>
+            <div class="f4"></div>
+        </div>
+    </div>
+</div>
+<script>
+    let Ele = document.querySelector('.f1');
+    let j = 0;
+
+    function travel(node) {
+        if (node && node.nodeType === 1) {
+            console.log(node.classList);
+            j++;
+            setTimeout(function () {
+                node.style.backgroundColor = 'red';
+            }, j * 500);
+            setTimeout(function () {
+                node.style.backgroundColor = '#fff';
+            }, (j + 1) * 500)
+        }
+
+        let i = 1, len = node.childElementCount, child = node.firstElementChild;
+        for (; i <= len; i++) {
+            travel(child);
+            child = child.nextElementSibling;
+        }
+    }
+
+    travel(Ele, 0);
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数字求和问题</title>
+</head>
+<body>
+<script>
+    /**
+     * 问题： 一组数字，n个， 求出所有和的情况, 包括2个数的和，3个等等
+     *
+     *
+     * 分析： n个数，和相加的情况一共有2 ->n， n-2种情况，外循环遍历从2到n
+     *  i个数相加，从第一个往后，加到最后一个，然后再从第二个往后加
+     *
+     * **/
+
+    function summing(arr) {
+        let len = arr.length;
+        // 外循环，用n-2种，控制几个数的和
+        for (let i = 2; i <= len; i++) {
+            // 第一个内循环,从第一个数开始
+            for (let j = 0; j <= len - i; j++) {
+                // 第二个内循环
+                for (let k = 0; k <; k++) {
+
+                }
+            }
+        }
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    /** 题目：牛牛想尝试一些新的料理，每个料理需要一些不同的材料，问完成所有的料理需要准备多少种不同的材料。
+     *
+     * 输入用例：每个输入包含 1 个测试用例。每个测试用例的第 i 行，表示完成第 i 件料理需要哪些材料，各个材料用空格隔开，
+     * 输入只包含大写英文字母和空格，输入文件不超过 50 行，每一行不超过 50 个字符。
+     *
+     * 思路：
+     *
+     *
+     *
+     *
+     * **/
+
+    /** 读取不确定行数的输入***/
+/*    process.stdin.resume();
+    process.stdin.setEncoding('ascii');
+
+    var input = "";
+    var input_array = "";
+
+    process.stdin.on('data', function (data) {
+        input += data;
+    });
+
+    process.stdin.on('end', function () {
+        input_array = input.split("\n");
+        //示例代码
+        var len = input_array.length;
+        var result = [];
+        for(var i=0; i<len; i++){
+            var temp = input_array[i].trim().split(' ');
+            for(var j=0; j<temp.length; j++){
+                if(temp[j]){
+                    result.push(temp[j]);
+                }
+
+            }
+        }
+        console.log(total(result));
+    });*/
+
+    function total(arr) {
+        if (arr.length <= 0) {
+            return 0
+        }
+        let resObj = {};
+        let result = 0;
+        for (let i in arr) {
+            if (!resObj[arr[i]]) {
+                resObj[arr[i]] = 1;
+                result++
+            }
+        }
+        return result;
+    }
+
+    console.log()
+</script>
+</body>
+</html>

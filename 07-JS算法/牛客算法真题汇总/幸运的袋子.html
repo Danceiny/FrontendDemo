@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    /** 题目：一个袋子里面有n个球，每个球上面都有一个号码(拥有相同号码的球是无区别的)。如果一个袋子是幸运的当且仅当所有球的号码的和大于所有球的号码的积。
+     例如：如果袋子里面的球的号码是{1, 1, 2, 3}，这个袋子就是幸运的，因为1 + 1 + 2 + 3 > 1 * 1 * 2 * 3
+     你可以适当从袋子里移除一些球(可以移除0个,但是别移除完)，要使移除后的袋子是幸运的。现在让你编程计算一下你可以获得的多少种不同的幸运的袋子
+     *
+     * 思路：先从小到大排序， 然后两层遍历循环，外层控制从低位往高位移动，内层控制除自身之外比他大的数计算，
+     *
+     * **/
+
+
+    function luckBag(n, arr) {
+        if (arr.length != n) {
+            return false
+        }
+        let resArr = [];
+        let count = 0;
+        arr = arr.sort();
+        for (let i = 0; i < n; i++) {
+            for (let j = i + 1; j < n; j++) {
+                let w = 0, p = 1;
+                w = arr[i] + arr[j];
+                p = arr[i] * arr[j];
+                if (w <= p) {
+                    break;
+                } else {
+                    count++;
+                    resArr.push(w);
+                    for (let k = j + 1; k < n; k++) {
+                        w += arr[k];
+                        p *= arr[k];
+                        if (w <= p) {
+                            break;
+                        } else {
+                            count++;
+                            resArr.push(w);
+                        }
+                    }
+                }
+            }
+        }
+        let qu = [...new Set(resArr)];
+debugger
+        return qu.length;
+
+    }
+
+    console.log(luckBag(8, [1, 1, 1, 1, 2, 2, 2, 2]))
+</script>
+</body>
+</html>

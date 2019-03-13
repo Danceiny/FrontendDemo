@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>节流</title>
+  <style>
+    .content {
+      width: 100%;
+      height: 1000px;
+      background: #ccc;
+    }
+  </style>
+</head>
+<body>
+<div class="content"></div>
+<script>
+  function throttle (fn, mustRun, wait) {
+    let timeout,
+      startTime = new Date();
+    return function () {
+      let that = this,
+        args = arguments,
+        nowTime = new Date();
+      clearTimeout(timeout);
+      if (nowTime - startTime >= mustRun) {
+        fn.apply(that, args);
+        startTime = nowTime;
+      } else {
+        timeout = setTimeout(fn, wait);  // 延时为了不丢失最后一次执行
+      }
+    }
+  }
+
+
+
+
+  document.addEventListener('scroll', throttle(print, 100, 200));
+
+  function print (e) {
+    console.log(e)
+  }
+
+</script>
+</body>
+</html>

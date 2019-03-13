@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+
+// step1： 创建一xhr对象
+let xhr = new XMLHttpRequest();
+// step2: 使用open规定请求方法，url，是否异步
+xhr.open('GET', url, asyncFlag);
+// step3: 使用send发送请求
+xhr.send();
+// step4：绑定请求返回处理函数
+xhr.onreadystatechange = function () {
+    if (xhr.readyState == 4 && (xhr.status === 200 || xhr.status === 304)) {
+        let res = xhr.responseText
+    }
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function cump(n, p) {
+        //厂商一
+        let temp1 = n >= 3 ? (n * p * 0.7 * 100) : (n * p * 100);
+        temp1 = Math.round(temp1) / 100;
+        temp1 = temp1 >= 50 ? temp1 - 10 : temp1;
+
+        // 厂商2
+        let temp2 = Math.round(n * p * 100) / 100;
+        let a = Math.floor(temp2 / 10);
+        temp2 = temp2 - (2 * a);
+        temp2 = temp2 >= 99 ? temp2 - 6 : temp2;
+
+        if (temp1 == temp2) {
+            return 0
+        } else {
+            return temp1 < temp2 ? 1 : 2
+        }
+    }
+
+    console.log(cump(4, 2.3))
+</script>
+</body>
+</html>
